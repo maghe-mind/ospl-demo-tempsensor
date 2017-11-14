@@ -1,0 +1,3 @@
+/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles/ospl_demo_tempsensor.dir
