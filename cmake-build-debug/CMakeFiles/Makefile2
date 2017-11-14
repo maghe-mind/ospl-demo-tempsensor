@@ -60,39 +60,39 @@ CMAKE_SOURCE_DIR = /home/maghe/git/ospl-demo-tempsensor
 CMAKE_BINARY_DIR = /home/maghe/git/ospl-demo-tempsensor/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/ospl_demo_tempsensor.dir
+# Target rules for target CMakeFiles/actuator_manager.dir
 
 # All Build rule for target.
-CMakeFiles/ospl_demo_tempsensor.dir/all:
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/depend
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target ospl_demo_tempsensor"
-.PHONY : CMakeFiles/ospl_demo_tempsensor.dir/all
+CMakeFiles/actuator_manager.dir/all:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/depend
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4 "Built target actuator_manager"
+.PHONY : CMakeFiles/actuator_manager.dir/all
 
 # Include target in all.
-all: CMakeFiles/ospl_demo_tempsensor.dir/all
+all: CMakeFiles/actuator_manager.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/ospl_demo_tempsensor.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/ospl_demo_tempsensor.dir/all
+CMakeFiles/actuator_manager.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/actuator_manager.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/ospl_demo_tempsensor.dir/rule
+.PHONY : CMakeFiles/actuator_manager.dir/rule
 
 # Convenience name for target.
-ospl_demo_tempsensor: CMakeFiles/ospl_demo_tempsensor.dir/rule
+actuator_manager: CMakeFiles/actuator_manager.dir/rule
 
-.PHONY : ospl_demo_tempsensor
-
-# clean rule for target.
-CMakeFiles/ospl_demo_tempsensor.dir/clean:
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/clean
-.PHONY : CMakeFiles/ospl_demo_tempsensor.dir/clean
+.PHONY : actuator_manager
 
 # clean rule for target.
-clean: CMakeFiles/ospl_demo_tempsensor.dir/clean
+CMakeFiles/actuator_manager.dir/clean:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/clean
+.PHONY : CMakeFiles/actuator_manager.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/actuator_manager.dir/clean
 
 .PHONY : clean
 

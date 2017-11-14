@@ -1,0 +1,45 @@
+========================================================================================
+Context     : dds:domain::DomainParticipant::DomainParticipant
+Date        : Tue Nov 14 10:34:25 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <13034>
+Thread      : main thread 7f416dd90740
+Internals   : DomainParticipantDelegate.cpp/88/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create DomainParticipant
+Internals   : org::opensplice::domain::DomainParticipantDelegate::DomainParticipantDelegate/DomainParticipantDelegate.cpp/88/1/1510652065.199732131
+----------------------------------------------------------------------------------------
+Report      : Unable to connect to domain id = 0.
+              The most common causes of this error are an incorrect configuration file or
+              that OpenSpliceDDS is not running (when using shared memory mode).
+Internals   : u_participantNew/u_participant.c/233/781/1510652065.199800508
+========================================================================================
+Context     : dds:domain::DomainParticipant::DomainParticipant
+Date        : Tue Nov 14 10:35:40 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <13256>
+Thread      : main thread 7ff0c4c88740
+Internals   : DomainParticipantDelegate.cpp/88/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create DomainParticipant
+Internals   : org::opensplice::domain::DomainParticipantDelegate::DomainParticipantDelegate/DomainParticipantDelegate.cpp/88/1/1510652140.758557331
+----------------------------------------------------------------------------------------
+Report      : Unable to connect to domain id = 0.
+              The most common causes of this error are an incorrect configuration file or
+              that OpenSpliceDDS is not running (when using shared memory mode).
+Internals   : u_participantNew/u_participant.c/233/781/1510652140.758651805
+========================================================================================
+Context     : dds:domain::DomainParticipant::DomainParticipant
+Date        : Tue Nov 14 10:40:11 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <13916>
+Thread      : main thread 7f359164f740
+Internals   : DomainParticipantDelegate.cpp/88/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create DomainParticipant
+Internals   : org::opensplice::domain::DomainParticipantDelegate::DomainParticipantDelegate/DomainParticipantDelegate.cpp/88/1/1510652411.536662245
+----------------------------------------------------------------------------------------
+Report      : Unable to connect to domain id = 0.
+              The most common causes of this error are an incorrect configuration file or
+              that OpenSpliceDDS is not running (when using shared memory mode).
+Internals   : u_participantNew/u_participant.c/233/781/1510652411.536738682

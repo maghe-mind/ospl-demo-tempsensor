@@ -121,7 +121,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ospl_demo_tempsensor
+CMAKE_PROJECT_NAME:STATIC=tempsensor
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -172,6 +172,15 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//Path to a library.
+DCPSISOCPP2_LIBRARY:FILEPATH=/home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/lib/libdcpsisocpp2.so
+
+//Path to a library.
+KERNEL_LIBRARY:FILEPATH=/home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/lib/libddskernel.so
+
+//Path to a file.
+OpenSplice_INCLUDE_DIR:PATH=/home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/include/dcps/C++/isocpp2
+
 //Path to a program.
 ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf
 
@@ -179,10 +188,22 @@ ProcessorCount_cmd_getconf:FILEPATH=/usr/bin/getconf
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
 
 //Value Computed by CMake
+actuator_manager_BINARY_DIR:STATIC=/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug
+
+//Value Computed by CMake
+actuator_manager_SOURCE_DIR:STATIC=/home/maghe/git/ospl-demo-tempsensor
+
+//Value Computed by CMake
 ospl_demo_tempsensor_BINARY_DIR:STATIC=/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug
 
 //Value Computed by CMake
 ospl_demo_tempsensor_SOURCE_DIR:STATIC=/home/maghe/git/ospl-demo-tempsensor
+
+//Value Computed by CMake
+tempsensor_BINARY_DIR:STATIC=/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug
+
+//Value Computed by CMake
+tempsensor_SOURCE_DIR:STATIC=/home/maghe/git/ospl-demo-tempsensor
 
 
 ########################

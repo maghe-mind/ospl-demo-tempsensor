@@ -1,0 +1,32 @@
+========================================================================================
+Report      : INFO
+Date        : Tue Nov 14 10:40:43 CET 2017
+Description : Process 'actuator_manager' <14025> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <14025>
+Thread      : main thread 7f8af1908740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510652443.760113566/2
+========================================================================================
+Report      : INFO
+Date        : Tue Nov 14 10:40:43 CET 2017
+Description : Process 'actuator_manager' <14025> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <14025>
+Thread      : main thread 7f8af1908740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510652443.783448522/2
+========================================================================================
+Report      : INFO
+Date        : Tue Nov 14 10:48:38 CET 2017
+Description : Process 'actuator_manager' <14519> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <14519>
+Thread      : main thread 7f7b3ab20740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510652918.289171968/2
+========================================================================================
+Report      : INFO
+Date        : Tue Nov 14 10:48:38 CET 2017
+Description : Process 'actuator_manager' <14519> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <14519>
+Thread      : main thread 7f7b3ab20740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510652918.315834531/2

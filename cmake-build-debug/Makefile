@@ -111,17 +111,71 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ospl_demo_tempsensor
+# Target rules for targets named actuator_manager
 
 # Build rule for target.
-ospl_demo_tempsensor: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ospl_demo_tempsensor
-.PHONY : ospl_demo_tempsensor
+actuator_manager: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 actuator_manager
+.PHONY : actuator_manager
 
 # fast build rule for target.
-ospl_demo_tempsensor/fast:
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/build
-.PHONY : ospl_demo_tempsensor/fast
+actuator_manager/fast:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/build
+.PHONY : actuator_manager/fast
+
+gen/tempsensor.o: gen/tempsensor.cpp.o
+
+.PHONY : gen/tempsensor.o
+
+# target to build an object file
+gen/tempsensor.cpp.o:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/gen/tempsensor.cpp.o
+.PHONY : gen/tempsensor.cpp.o
+
+gen/tempsensor.i: gen/tempsensor.cpp.i
+
+.PHONY : gen/tempsensor.i
+
+# target to preprocess a source file
+gen/tempsensor.cpp.i:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/gen/tempsensor.cpp.i
+.PHONY : gen/tempsensor.cpp.i
+
+gen/tempsensor.s: gen/tempsensor.cpp.s
+
+.PHONY : gen/tempsensor.s
+
+# target to generate assembly for a file
+gen/tempsensor.cpp.s:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/gen/tempsensor.cpp.s
+.PHONY : gen/tempsensor.cpp.s
+
+gen/tempsensorSplDcps.o: gen/tempsensorSplDcps.cpp.o
+
+.PHONY : gen/tempsensorSplDcps.o
+
+# target to build an object file
+gen/tempsensorSplDcps.cpp.o:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/gen/tempsensorSplDcps.cpp.o
+.PHONY : gen/tempsensorSplDcps.cpp.o
+
+gen/tempsensorSplDcps.i: gen/tempsensorSplDcps.cpp.i
+
+.PHONY : gen/tempsensorSplDcps.i
+
+# target to preprocess a source file
+gen/tempsensorSplDcps.cpp.i:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/gen/tempsensorSplDcps.cpp.i
+.PHONY : gen/tempsensorSplDcps.cpp.i
+
+gen/tempsensorSplDcps.s: gen/tempsensorSplDcps.cpp.s
+
+.PHONY : gen/tempsensorSplDcps.s
+
+# target to generate assembly for a file
+gen/tempsensorSplDcps.cpp.s:
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/gen/tempsensorSplDcps.cpp.s
+.PHONY : gen/tempsensorSplDcps.cpp.s
 
 main.o: main.cpp.o
 
@@ -129,7 +183,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/main.cpp.o
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -138,7 +192,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/main.cpp.i
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -147,7 +201,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) -f CMakeFiles/ospl_demo_tempsensor.dir/build.make CMakeFiles/ospl_demo_tempsensor.dir/main.cpp.s
+	$(MAKE) -f CMakeFiles/actuator_manager.dir/build.make CMakeFiles/actuator_manager.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -158,7 +212,13 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ospl_demo_tempsensor"
+	@echo "... actuator_manager"
+	@echo "... gen/tempsensor.o"
+	@echo "... gen/tempsensor.i"
+	@echo "... gen/tempsensor.s"
+	@echo "... gen/tempsensorSplDcps.o"
+	@echo "... gen/tempsensorSplDcps.i"
+	@echo "... gen/tempsensorSplDcps.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

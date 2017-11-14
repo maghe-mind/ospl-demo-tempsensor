@@ -1,0 +1,16 @@
+========================================================================================
+Report      : ERROR
+Date        : Mon Nov 13 18:11:05 CET 2017
+Description : Detaching process 3699 from kernel failed (domain 2), because there were threads modifying shared resources (protectCount=3, pc=5, wc=2, bc=0).
+Node        : maghe-Latitude-E5520
+Process     : spliced <3684>
+Thread      : shmMonitor 7faa23094700
+Internals   : 6.8.2/9869914/5822975/v_kernelDetach/v_kernel.c/539/781/1510593065.795578333/-1
+========================================================================================
+Report      : FATAL
+Date        : Mon Nov 13 18:11:05 CET 2017
+Description : Cleaning up resources of terminated process 3699 failed, because process was modifying shared resources when it terminated, stopping domain now...
+Node        : maghe-Latitude-E5520
+Process     : spliced <3684>
+Thread      : shmMonitor 7faa23094700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/s_shmMonitor.c/119/0/1510593065.795761493/-1

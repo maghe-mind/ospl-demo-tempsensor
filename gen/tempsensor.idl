@@ -1,0 +1,15 @@
+enum TemperatureScale {
+ CELSIUS,
+ KELVIN,
+ FAHRENHEIT
+};
+
+
+struct TempSensorType {
+ short id;
+ float temp;
+ float hum;
+TemperatureScale scale;
+};
+
+#pragma keylist TempSensorType id
