@@ -40,13 +40,76 @@ int main() {
 
     sleep(1);
 
-    return 0;
 
 
-/**********************************************************
+
+
+/*
+ **********************************************************
 * DataReader
 **********************************************************
+ */
 
+
+
+         /** A dds::sub::Subscriber is created on the domain participant. */
+    //std::string name = "Durability example";
+    dds::sub::qos::SubscriberQos subQos
+            = dp.default_subscriber_qos()
+                    << dds::core::policy::Partition(name);
+    dds::sub::Subscriber sub(dp, subQos);
+
+    /** The dds::sub::qos::DataReaderQos are derived from the topic qos */
+    dds::sub::qos::DataReaderQos drqos = topic.qos();
+
+    /** A dds::sub::DataReader is created on the Subscriber & Topic with the DataReaderQos. */
+    dds::sub::DataReader<TempSensorType> dr(sub, topic, drqos);
+    dds::core::Duration timeout(40, 0);
+   // dr.wait_for_historical_data(timeout);
+
+    std::cout << "=== [Subscriber] Ready ..." << std::endl;
+
+
+    bool sampleReceived = false;
+    int count = 0;
+    do
+    {
+        dds::sub::LoanedSamples<TempSensorType> samples = dr.take();
+        for (dds::sub::LoanedSamples<TempSensorType>::const_iterator sample = samples.begin();
+             sample < samples.end();
+             ++sample)
+        {
+            if (sample->info().valid())
+            {
+                std::cout << "=== [Subscriber] message received :" << std::endl;
+                std::cout << "    ID  : " << sample->data().id() << std::endl;
+                std::cout << "    Temp  : " << sample->data().temp() << std::endl;
+                //std::cout << "    Scale  : " << sample->data().scale() << std::endl;
+                std::cout << "    Humidity  : " << sample->data().hum() << std::endl;
+                sampleReceived = true;
+            }
+        }
+
+
+        ++count;
+    }
+    while (!sampleReceived && count < 600);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 // Create a DataReader
     dds::sub::Subscriber sub(dp);
     dds::sub::DataReader<TempSensorType> dr(sub, topic);
@@ -63,12 +126,13 @@ int main() {
 
 
 
+*/
+
 
 
 
 
 
     return 0;
-*/
  }
 
