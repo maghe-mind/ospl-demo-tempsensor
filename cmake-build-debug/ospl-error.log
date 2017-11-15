@@ -43,3 +43,187 @@ Report      : Unable to connect to domain id = 0.
               The most common causes of this error are an incorrect configuration file or
               that OpenSpliceDDS is not running (when using shared memory mode).
 Internals   : u_participantNew/u_participant.c/233/781/1510652411.536738682
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 11:20:53 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9598>
+Thread      : main thread 7ffff7fcd740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510741253.209377948
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510741253.209454038
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Reliability'.
+Internals   : v_topicNew/v_topicImpl.c/413/779/1510741253.209533093
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Durability'.
+Internals   : v_topicNew/v_topicImpl.c/378/779/1510741253.209676594
+========================================================================================
+Context     : os_signalHandler
+Date        : Wed Nov 15 11:20:57 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9598>
+Thread      : signalHandler 7ffff641d700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : An exception occurred, the process will now disconnect from all DDS domains
+Internals   : u__userExceptionHandler/u_user.c/302/773/1510741257.228159711
+----------------------------------------------------------------------------------------
+Report      : Exception (signal 6; 0x0; 0x7ffff6d85428) generated in process
+Internals   : signalHandlerThread/os_signalHandler.c/580/0/1510741257.228266677
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 11:21:51 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9671>
+Thread      : main thread 7ffff7fcd740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510741311.593462964
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510741311.593542409
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Reliability'.
+Internals   : v_topicNew/v_topicImpl.c/413/779/1510741311.593612523
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Durability'.
+Internals   : v_topicNew/v_topicImpl.c/378/779/1510741311.593696530
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 11:22:02 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9725>
+Thread      : main thread 7fb680b38740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510741322.980680607
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510741322.980744412
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Reliability'.
+Internals   : v_topicNew/v_topicImpl.c/413/779/1510741322.980813269
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Durability'.
+Internals   : v_topicNew/v_topicImpl.c/378/779/1510741322.980871888
+========================================================================================
+Context     : os_signalHandler
+Date        : Wed Nov 15 11:22:02 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9725>
+Thread      : signalHandler 7fb67ef84700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : An exception occurred, the process will now disconnect from all DDS domains
+Internals   : u__userExceptionHandler/u_user.c/302/773/1510741322.986913624
+----------------------------------------------------------------------------------------
+Report      : Exception (signal 6; 0x0; 0x7fb67f8ec428) generated in process
+Internals   : signalHandlerThread/os_signalHandler.c/580/0/1510741322.986980969
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 11:24:51 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9939>
+Thread      : main thread 7ffff7fcd740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510741491.040252037
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510741491.040324614
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Reliability'.
+Internals   : v_topicNew/v_topicImpl.c/413/779/1510741491.040381148
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Durability'.
+Internals   : v_topicNew/v_topicImpl.c/378/779/1510741491.040435446
+========================================================================================
+Context     : os_signalHandler
+Date        : Wed Nov 15 11:24:59 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <9939>
+Thread      : signalHandler 7ffff641d700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : An exception occurred, the process will now disconnect from all DDS domains
+Internals   : u__userExceptionHandler/u_user.c/302/773/1510741499.192719808
+----------------------------------------------------------------------------------------
+Report      : Exception (signal 6; 0x0; 0x7ffff6d85428) generated in process
+Internals   : signalHandlerThread/os_signalHandler.c/580/0/1510741499.192823356
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 11:25:30 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <10030>
+Thread      : main thread 7ffff7fcd740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510741530.607553844
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510741530.607602579
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Durability'.
+Internals   : v_topicNew/v_topicImpl.c/378/779/1510741530.607648083
+========================================================================================
+Context     : os_signalHandler
+Date        : Wed Nov 15 11:25:35 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <10030>
+Thread      : signalHandler 7ffff641d700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : An exception occurred, the process will now disconnect from all DDS domains
+Internals   : u__userExceptionHandler/u_user.c/302/773/1510741535.615447089
+----------------------------------------------------------------------------------------
+Report      : Exception (signal 6; 0x0; 0x7ffff6d85428) generated in process
+Internals   : signalHandlerThread/os_signalHandler.c/580/0/1510741535.615625498
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 11:29:02 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <10255>
+Thread      : main thread 7ffff7fcd740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510741742.709297327
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510741742.709485453
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Reliability'.
+Internals   : v_topicNew/v_topicImpl.c/413/779/1510741742.709668707
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'Durability'.
+Internals   : v_topicNew/v_topicImpl.c/378/779/1510741742.709839486
+========================================================================================
+Report      : ERROR
+Date        : Wed Nov 15 15:00:00 CET 2017
+Description : Inconsistent policy: History::depth (0) not consistent with KEEP_LAST
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <21760>
+Thread      : main thread 7f28c13dd740
+Internals   : 6.8.2/9869914/5822975/org::opensplice::core::policy::HistoryDelegate::check/PolicyDelegate.cpp/862/8/1510754400.715928284/2
+========================================================================================
+Context     : os_signalHandler
+Date        : Wed Nov 15 15:00:00 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <21760>
+Thread      : signalHandler 7f28bf829700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : An exception occurred, the process will now disconnect from all DDS domains
+Internals   : u__userExceptionHandler/u_user.c/302/773/1510754400.727378521
+----------------------------------------------------------------------------------------
+Report      : Exception (signal 6; 0x0; 0x7f28c0191428) generated in process
+Internals   : signalHandlerThread/os_signalHandler.c/580/0/1510754400.727445749
