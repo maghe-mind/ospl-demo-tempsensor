@@ -227,3 +227,19 @@ Internals   : u__userExceptionHandler/u_user.c/302/773/1510754400.727378521
 ----------------------------------------------------------------------------------------
 Report      : Exception (signal 6; 0x0; 0x7f28c0191428) generated in process
 Internals   : signalHandlerThread/os_signalHandler.c/580/0/1510754400.727445749
+========================================================================================
+Context     : dds::topic::detail::Topic<T>::Topic
+Date        : Wed Nov 15 18:17:28 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6925>
+Thread      : main thread 7fdf416dc740
+Internals   : TTopicImpl.hpp/203/6.8.2/9869914/5822975/2
+----------------------------------------------------------------------------------------
+Report      : Error: Failed to create Topic
+Internals   : dds::topic::detail::Topic<T>::Topic/TTopicImpl.hpp/203/1/1510766248.926856185
+----------------------------------------------------------------------------------------
+Report      : Create kernel entity failed. For Topic: <TempSensorTopic>
+Internals   : u_topicNew/u_topic.c/235/772/1510766248.926951133
+----------------------------------------------------------------------------------------
+Report      : Create Topic <TempSensorTopic> failed: Unmatching QoS Policy: 'History'.
+Internals   : v_topicNew/v_topicImpl.c/455/779/1510766248.927012554

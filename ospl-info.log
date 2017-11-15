@@ -1,0 +1,374 @@
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : main thread 7fc7e147e700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766331.565679588/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : Started service ddsi2 with args "ddsi2" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : main thread 7fc7e147e700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766331.566055559/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : Started service durability with args "durability" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : main thread 7fc7e147e700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766331.566339454/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : Started service cmsoap with args "cmsoap" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : main thread 7fc7e147e700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766331.566638255/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : SOAP service is reachable via port 46309
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7031>
+Thread      : main thread 7f8767fb4700
+Internals   : 6.8.2/9869914/5822975/CM SOAP Service/cms_service.c/445/0/1510766331.575483018/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'cmsoap' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7031>
+Thread      : main thread 7f8767fb4700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766331.575989515/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : ddsi2 <7029>
+Thread      : main thread 7efe51045700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766331.603648581/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:51 CET 2017
+Description : The durability service can be identified by ID: 1932982532
+Node        : maghe-Latitude-E5520
+Process     : durability <7030>
+Thread      : main thread 7f49360a6740
+Internals   : 6.8.2/9869914/5822975/DurabilityService/d_durability.c/674/0/1510766331.835332176/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:18:59 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'durability' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : durability <7030>
+Thread      : conflictResolver 7f4935ffa700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766339.148073888/2
+========================================================================================
+Report      : INFO
+Context     : os_signalHandler
+Date        : Wed Nov 15 18:20:17 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : signalHandler 7fc7df759700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : Termination request (signal 15) received from PID 7326, UID 1000
+Internals   : signalHandlerThread/os_signalHandler.c/629/0/1510766417.089860511
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:17 CET 2017
+Description : ================================================
+              == The service 'ddsi2' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : ddsi2 <7029>
+Thread      : main thread 7efe51045700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766417.100386993/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:17 CET 2017
+Description : not accepting requests.
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7031>
+Thread      : main thread 7f8767fb4700
+Internals   : 6.8.2/9869914/5822975/CM SOAP Service/cmsoap.c/114/0/1510766417.655496397/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:17 CET 2017
+Description : ================================================
+              == The service 'cmsoap' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7031>
+Thread      : main thread 7f8767fb4700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766417.655750222/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:19 CET 2017
+Description : ================================================
+              == The service 'durability' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : durability <7030>
+Thread      : main thread 7f49360a6740
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766419.131120016/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:19 CET 2017
+Description : ================================================
+              == The service 'splicedaemon' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : main thread 7fc7e147e700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766419.213953036/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:19 CET 2017
+Description : Removed 8837 objects
+Node        : maghe-Latitude-E5520
+Process     : spliced <7014>
+Thread      : main thread 7fc7e147e700
+Internals   : 6.8.2/9869914/5822975/Database close/c_base.c/3262/0/1510766419.217057707/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : main thread 7f392c5a8700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766421.389200810/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : Started service ddsi2 with args "ddsi2" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : main thread 7f392c5a8700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766421.389729171/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : Started service durability with args "durability" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : main thread 7f392c5a8700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766421.390118662/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : Started service cmsoap with args "cmsoap" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : main thread 7f392c5a8700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766421.390479213/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : SOAP service is reachable via port 44563
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7347>
+Thread      : main thread 7f3153ae0700
+Internals   : 6.8.2/9869914/5822975/CM SOAP Service/cms_service.c/445/0/1510766421.396945344/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'cmsoap' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7347>
+Thread      : main thread 7f3153ae0700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766421.397384302/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:21 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : ddsi2 <7345>
+Thread      : main thread 7f2f4ea31700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766421.415951093/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:22 CET 2017
+Description : The durability service can be identified by ID: 675753337
+Node        : maghe-Latitude-E5520
+Process     : durability <7346>
+Thread      : main thread 7fbae2738740
+Internals   : 6.8.2/9869914/5822975/DurabilityService/d_durability.c/674/0/1510766422.423936181/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:29 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'durability' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : durability <7346>
+Thread      : conflictResolver 7fbae268c700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766429.539832752/2
+========================================================================================
+Report      : INFO
+Context     : os_signalHandler
+Date        : Wed Nov 15 18:20:30 CET 2017
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : signalHandler 7f392a883700
+Internals   : os_signalHandler.c/658/6.8.2/9869914/5822975/-1
+----------------------------------------------------------------------------------------
+Report      : Termination request (signal 15) received from PID 7409, UID 1000
+Internals   : signalHandlerThread/os_signalHandler.c/629/0/1510766430.052148942
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:30 CET 2017
+Description : ================================================
+              == The service 'ddsi2' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : ddsi2 <7345>
+Thread      : main thread 7f2f4ea31700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766430.064716489/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:30 CET 2017
+Description : not accepting requests.
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7347>
+Thread      : main thread 7f3153ae0700
+Internals   : 6.8.2/9869914/5822975/CM SOAP Service/cmsoap.c/114/0/1510766430.405166359/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:30 CET 2017
+Description : ================================================
+              == The service 'cmsoap' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7347>
+Thread      : main thread 7f3153ae0700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766430.405742820/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:31 CET 2017
+Description : ================================================
+              == The service 'durability' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : durability <7346>
+Thread      : main thread 7fbae2738740
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766431.523552136/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:31 CET 2017
+Description : ================================================
+              == The service 'splicedaemon' has now terminated. 
+              ================================================
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : main thread 7f392c5a8700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/307/0/1510766431.577377440/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:31 CET 2017
+Description : Removed 8748 objects
+Node        : maghe-Latitude-E5520
+Process     : spliced <7330>
+Thread      : main thread 7f392c5a8700
+Internals   : 6.8.2/9869914/5822975/Database close/c_base.c/3262/0/1510766431.581765485/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'splicedaemon' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : spliced <7430>
+Thread      : main thread 7f3f29237700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766442.374708201/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : Started service ddsi2 with args "ddsi2" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7430>
+Thread      : main thread 7f3f29237700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766442.375397293/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : Started service durability with args "durability" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7430>
+Thread      : main thread 7f3f29237700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766442.375838617/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : Started service cmsoap with args "cmsoap" "file:///home/maghe/PrismTech/Vortex_v2/Device/VortexOpenSplice/6.8.2/HDE/x86_64.linux/etc/config/ospl.xml"
+Node        : maghe-Latitude-E5520
+Process     : spliced <7430>
+Thread      : main thread 7f3f29237700
+Internals   : 6.8.2/9869914/5822975/OpenSplice domain service/spliced.c/811/0/1510766442.376225750/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : SOAP service is reachable via port 36129
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7448>
+Thread      : main thread 7fe258d53700
+Internals   : 6.8.2/9869914/5822975/CM SOAP Service/cms_service.c/445/0/1510766442.386110058/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'cmsoap' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : cmsoap <7448>
+Thread      : main thread 7fe258d53700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766442.386583979/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:42 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'ddsi2' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : ddsi2 <7446>
+Thread      : main thread 7f71af053700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766442.411813514/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:43 CET 2017
+Description : The durability service can be identified by ID: 1388669047
+Node        : maghe-Latitude-E5520
+Process     : durability <7447>
+Thread      : main thread 7f8f3bfe4740
+Internals   : 6.8.2/9869914/5822975/DurabilityService/d_durability.c/674/0/1510766443.121916943/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:50 CET 2017
+Description : ++++++++++++++++++++++++++++++++++++++++++++++++
+              ++ The service 'durability' is now operational. 
+              ++++++++++++++++++++++++++++++++++++++++++++++++
+Node        : maghe-Latitude-E5520
+Process     : durability <7447>
+Thread      : conflictResolver 7f8f3bf38700
+Internals   : 6.8.2/9869914/5822975/v_serviceChangeState/v_service.c/300/0/1510766450.431360838/2

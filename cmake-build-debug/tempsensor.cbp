@@ -109,6 +109,12 @@
 		<Unit filename="/home/maghe/git/ospl-demo-tempsensor/gen/tempsensor_DCPS.hpp">
 			<Option target="actuator_manager"/>
 		</Unit>
+		<Unit filename="/home/maghe/git/ospl-demo-tempsensor/implementation.cpp">
+			<Option target="actuator_manager"/>
+		</Unit>
+		<Unit filename="/home/maghe/git/ospl-demo-tempsensor/implementation.h">
+			<Option target="actuator_manager"/>
+		</Unit>
 		<Unit filename="/home/maghe/git/ospl-demo-tempsensor/main.cpp">
 			<Option target="actuator_manager"/>
 		</Unit>

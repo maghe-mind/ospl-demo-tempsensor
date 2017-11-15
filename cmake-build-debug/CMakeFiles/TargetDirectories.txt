@@ -1,3 +1,0 @@
-/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/maghe/git/ospl-demo-tempsensor/cmake-build-debug/CMakeFiles/actuator_manager.dir

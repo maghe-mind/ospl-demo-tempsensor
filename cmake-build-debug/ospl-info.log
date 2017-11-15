@@ -486,3 +486,275 @@ Node        : maghe-Latitude-E5520
 Process     : actuator_manager <27504>
 Thread      : main thread 7facc6475740
 Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510759808.260130582/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:13:33 CET 2017
+Description : Process 'actuator_manager' <2973> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <2973>
+Thread      : main thread 7fc264316740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510762413.460672810/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:13:34 CET 2017
+Description : Process 'actuator_manager' <2973> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <2973>
+Thread      : main thread 7fc264316740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510762414.475312980/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:43:27 CET 2017
+Description : Process 'actuator_manager' <4798> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4798>
+Thread      : main thread 7efd6a1f2740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764207.311991592/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:43:28 CET 2017
+Description : Process 'actuator_manager' <4798> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4798>
+Thread      : main thread 7efd6a1f2740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764208.366590615/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:43:28 CET 2017
+Description : Process 'actuator_manager' <4798> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4798>
+Thread      : main thread 7efd6a1f2740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764208.368294804/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:43:29 CET 2017
+Description : Process 'actuator_manager' <4798> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4798>
+Thread      : main thread 7efd6a1f2740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764209.373371325/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:43:29 CET 2017
+Description : Process 'actuator_manager' <4798> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4798>
+Thread      : main thread 7efd6a1f2740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764209.374914025/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:43:30 CET 2017
+Description : Process 'actuator_manager' <4798> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4798>
+Thread      : main thread 7efd6a1f2740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764210.386896344/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:01 CET 2017
+Description : Process 'actuator_manager' <4966> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4966>
+Thread      : main thread 7fc57bdb7740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764301.885705018/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:02 CET 2017
+Description : Process 'actuator_manager' <4966> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4966>
+Thread      : main thread 7fc57bdb7740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764302.891433794/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:02 CET 2017
+Description : Process 'actuator_manager' <4966> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4966>
+Thread      : main thread 7fc57bdb7740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764302.893634516/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:03 CET 2017
+Description : Process 'actuator_manager' <4966> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4966>
+Thread      : main thread 7fc57bdb7740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764303.898427440/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:03 CET 2017
+Description : Process 'actuator_manager' <4966> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4966>
+Thread      : main thread 7fc57bdb7740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764303.900218611/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:03 CET 2017
+Description : Process 'actuator_manager' <4966> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <4966>
+Thread      : main thread 7fc57bdb7740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764303.905464264/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:26 CET 2017
+Description : Process 'actuator_manager' <5050> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <5050>
+Thread      : main thread 7f68742d7740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764326.713747757/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:27 CET 2017
+Description : Process 'actuator_manager' <5050> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <5050>
+Thread      : main thread 7f68742d7740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764327.718697496/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:27 CET 2017
+Description : Process 'actuator_manager' <5050> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <5050>
+Thread      : main thread 7f68742d7740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764327.720720196/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:28 CET 2017
+Description : Process 'actuator_manager' <5050> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <5050>
+Thread      : main thread 7f68742d7740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764328.725979843/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:28 CET 2017
+Description : Process 'actuator_manager' <5050> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <5050>
+Thread      : main thread 7f68742d7740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510764328.727989122/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 17:45:28 CET 2017
+Description : Process 'actuator_manager' <5050> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <5050>
+Thread      : main thread 7f68742d7740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510764328.734122299/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:11:08 CET 2017
+Description : Process 'actuator_manager' <6457> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6457>
+Thread      : main thread 7f1f14134740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510765868.184954249/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:11:10 CET 2017
+Description : Process 'actuator_manager' <6457> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6457>
+Thread      : main thread 7f1f14134740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510765870.220394650/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:11:26 CET 2017
+Description : Process 'actuator_manager' <6527> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6527>
+Thread      : main thread 7f59af972740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510765886.984355175/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:11:28 CET 2017
+Description : Process 'actuator_manager' <6527> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6527>
+Thread      : main thread 7f59af972740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510765888.991757345/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:17:28 CET 2017
+Description : Process 'actuator_manager' <6925> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6925>
+Thread      : main thread 7fdf416dc740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510766248.920757066/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:17:28 CET 2017
+Description : Process 'actuator_manager' <6925> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <6925>
+Thread      : signalHandler 7fdf3fb28700
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510766248.931249090/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:19:10 CET 2017
+Description : Process 'actuator_manager' <7151> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7151>
+Thread      : main thread 7f63dacec740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510766350.964694972/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:19:10 CET 2017
+Description : Process 'actuator_manager' <7151> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7151>
+Thread      : main thread 7f63dacec740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510766350.973882486/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:19:34 CET 2017
+Description : Process 'actuator_manager' <7228> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7228>
+Thread      : main thread 7f9ab803d740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510766374.592494439/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:19:35 CET 2017
+Description : Process 'actuator_manager' <7228> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7228>
+Thread      : main thread 7f9ab803d740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510766375.599550408/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:19:48 CET 2017
+Description : Process 'actuator_manager' <7277> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7277>
+Thread      : main thread 7f5a6ec43740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510766388.723641991/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:19:49 CET 2017
+Description : Process 'actuator_manager' <7277> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7277>
+Thread      : main thread 7f5a6ec43740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510766389.728956635/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:53 CET 2017
+Description : Process 'actuator_manager' <7547> attached to shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7547>
+Thread      : main thread 7fbeaf3e5740
+Internals   : 6.8.2/9869914/5822975/u__domainOpen/u_domain.c/1632/0/1510766453.179963920/2
+========================================================================================
+Report      : INFO
+Date        : Wed Nov 15 18:20:54 CET 2017
+Description : Process 'actuator_manager' <7547> detached from shared memory
+Node        : maghe-Latitude-E5520
+Process     : actuator_manager <7547>
+Thread      : main thread 7fbeaf3e5740
+Internals   : 6.8.2/9869914/5822975/u__domainDelete/u_domain.c/1891/0/1510766454.187494954/2

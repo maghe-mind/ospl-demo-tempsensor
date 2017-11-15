@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/actuator_manager.dir/main.cpp.o"
   "CMakeFiles/actuator_manager.dir/gen/tempsensor.cpp.o"
   "CMakeFiles/actuator_manager.dir/gen/tempsensorSplDcps.cpp.o"
+  "CMakeFiles/actuator_manager.dir/implementation.cpp.o"
   "actuator_manager.pdb"
   "actuator_manager"
 )

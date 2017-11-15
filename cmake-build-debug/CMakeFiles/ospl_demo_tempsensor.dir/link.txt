@@ -1,1 +1,0 @@
-/usr/bin/c++  -g   CMakeFiles/ospl_demo_tempsensor.dir/main.cpp.o  -o ospl_demo_tempsensor 
