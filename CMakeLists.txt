@@ -3,9 +3,12 @@ cmake_minimum_required(VERSION 3.1)
 project(tempsensor)
 
 # Set
-set(EXECUTABLE_NAME actuator_manager)
+set(EXECUTABLE_NAME sensibo_manager)
 
-set(IDL_GENERATED_PATH "${PROJECT_SOURCE_DIR}/gen")
+set(MY_IDL_GENERATED_PATH "${PROJECT_SOURCE_DIR}/gen")
+set(IDL_GENERATED_PATH "${PROJECT_SOURCE_DIR}/../idlopensplice/cpp")
+set(MIND_POST_PROCESSING "${PROJECT_SOURCE_DIR}/../mind-ddl-postprocessor/generated_files")
+set(MIND_DDS_LIBRARY "${PROJECT_SOURCE_DIR}/../mindddslibrary")
 
 set(DEBUG 0)
 
@@ -23,6 +26,11 @@ file(GLOB IDL_GENERATED_CPP
         "${IDL_GENERATED_PATH}/*.cpp"
         "${IDL_GENERATED_PATH}/*.h"
         "${IDL_GENERATED_PATH}/*.hpp"
+        "${MY_IDL_GENERATED_PATH}/*.cpp"
+        "${MY_IDL_GENERATED_PATH}/*.h"
+        "${MY_IDL_GENERATED_PATH}/*.hpp"
+        "${MIND_POST_PROCESSING}/*.h"
+        "${MIND_DDS_LIBRARY}/*.h"
         )
 
 find_package(OpenSplice REQUIRED)
@@ -30,20 +38,18 @@ find_package(OpenSplice REQUIRED)
 include_directories(
         ${OpenSplice_INCLUDE_DIRS}
         ${IDL_GENERATED_PATH}
+        ${MY_IDL_GENERATED_PATH}
+        ${MIND_DDS_LIBRARY}
+        ${MIND_POST_PROCESSING}
 )
-
-include_directories("mindddslibrary/")
-
-# Automatically add helpers files
-file(GLOB SCRIPTS_FILES
-     "mindddslibrary/*.h")
 
 message("${IDL_GENERATED_CPP}")
 
-set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED_CPP} ${HANDLERS_FILES} ${SCRIPTS_FILES} implementation.h implementation.cpp)
+set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED_CPP} implementation.h implementation.cpp)
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
-target_link_libraries(${EXECUTABLE_NAME} pthread)
+target_link_libraries(${EXECUTABLE_NAME}
+        -L/usr/lib/x86_64-linux-gnu/ -lpthread)
 
 # Add OpenSplice dirs
 target_link_libraries(${EXECUTABLE_NAME} ${OpenSplice_LIBRARIES})

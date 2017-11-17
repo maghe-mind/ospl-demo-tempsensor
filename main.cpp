@@ -1,10 +1,12 @@
 #include <iostream>
 #include <algorithm>
-#include "gen/tempsensor_DCPS.hpp"
+#include "tempsensor_DCPS.hpp"
 #include "implementation.h"
+#include "DDSManager.h"
+
+
 
 int main() {
-
 
     dds::domain::DomainParticipant dp(2); //Change the value also in ospl.xml
 
