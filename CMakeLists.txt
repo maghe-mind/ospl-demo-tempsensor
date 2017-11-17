@@ -35,6 +35,7 @@ file(GLOB IDL_GENERATED_CPP
 
 find_package(OpenSplice REQUIRED)
 
+# Folders visible in the IDE project explorer
 include_directories(
         ${OpenSplice_INCLUDE_DIRS}
         ${IDL_GENERATED_PATH}
