@@ -20,31 +20,49 @@ public:
     }
 };
 
-int main() {
 
-    std::string partitionName = "DemoTempSensor";
+void writeOnTopic(std::string partitionName, TempSensorType ts){
+
+    std::cout << "Publisher" << std::endl;
     DDSPublisher<TempSensorType> ddsPublisher(partitionName);
-
-    TemperatureScale scale = TemperatureScale::CELSIUS;
-    TempSensorType ts;
-    ts.id(2);
-    ts.hum(75.0F);
-    ts.temp(30.0F);
-    ts.scale(scale);
     ddsPublisher.write(ts);
+}
 
+void readFromTopic(std::string partitionName ){
     DDSReader<TempSensorType> reader(partitionName);
-    reader.initReader(10);
 
+    reader.initReader(10);
     std::vector<TempSensorType> samples;
     reader.readAll(samples);
 
     for (int i = 0; i < samples.size(); i++) {
 
-        std::cout << "ID " << samples[i].id() << std::endl;
+        std::cout << "UUID " << samples[i].UUID() << std::endl;
         std::cout << "Hum " << samples[i].hum() << std::endl;
-        std::cout << "temp " << samples[i].temp() << std::endl;
+        std::cout << "temp " << samples[i].temp() << std::endl << std::flush;
     }
+
+}
+
+
+
+int main() {
+
+    std::string partitionName = "DemoTempSensor";
+
+    TemperatureScale scale = TemperatureScale::CELSIUS;
+    TempSensorType ts;
+    ts.UUID("3");
+    ts.hum(75.0F);
+    ts.temp(30.0F);
+    ts.scale(scale);
+
+    writeOnTopic(partitionName, ts);
+
+
+
+    readFromTopic (partitionName);
+
 
     /*
     Example: read exists

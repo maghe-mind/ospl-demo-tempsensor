@@ -12,37 +12,36 @@ OSPL_ENUM TemperatureScale {
 class TempSensorType OSPL_DDS_FINAL
 {
 public:
-    int16_t id_;
+    std::string UUID_;
     float temp_;
     float hum_;
     TemperatureScale scale_;
 
 public:
     TempSensorType() :
-            id_(0),
             temp_(0.0f),
             hum_(0.0f),
             scale_(OSPL_ENUM_LABEL(,TemperatureScale,CELSIUS)) {}
 
     explicit TempSensorType(
-        int16_t id,
+        const std::string& UUID,
         float temp,
         float hum,
         TemperatureScale scale) : 
-            id_(id),
+            UUID_(UUID),
             temp_(temp),
             hum_(hum),
             scale_(scale) {}
 
     TempSensorType(const TempSensorType &_other) : 
-            id_(_other.id_),
+            UUID_(_other.UUID_),
             temp_(_other.temp_),
             hum_(_other.hum_),
             scale_(_other.scale_) {}
 
 #ifdef OSPL_DDS_CXX11
     TempSensorType(TempSensorType &&_other) : 
-            id_(::std::move(_other.id_)),
+            UUID_(::std::move(_other.UUID_)),
             temp_(::std::move(_other.temp_)),
             hum_(::std::move(_other.hum_)),
             scale_(::std::move(_other.scale_)) {}
@@ -50,7 +49,7 @@ public:
     TempSensorType& operator=(TempSensorType &&_other)
     {
         if (this != &_other) {
-            id_ = ::std::move(_other.id_);
+            UUID_ = ::std::move(_other.UUID_);
             temp_ = ::std::move(_other.temp_);
             hum_ = ::std::move(_other.hum_);
             scale_ = ::std::move(_other.scale_);
@@ -62,7 +61,7 @@ public:
     TempSensorType& operator=(const TempSensorType &_other)
     {
         if (this != &_other) {
-            id_ = _other.id_;
+            UUID_ = _other.UUID_;
             temp_ = _other.temp_;
             hum_ = _other.hum_;
             scale_ = _other.scale_;
@@ -72,7 +71,7 @@ public:
 
     bool operator==(const TempSensorType& _other) const
     {
-        return id_ == _other.id_ &&
+        return UUID_ == _other.UUID_ &&
             temp_ == _other.temp_ &&
             hum_ == _other.hum_ &&
             scale_ == _other.scale_;
@@ -83,9 +82,12 @@ public:
         return !(*this == _other);
     }
 
-    int16_t id() const { return this->id_; }
-    int16_t& id() { return this->id_; }
-    void id(int16_t _val_) { this->id_ = _val_; }
+    const std::string& UUID() const { return this->UUID_; }
+    std::string& UUID() { return this->UUID_; }
+    void UUID(const std::string& _val_) { this->UUID_ = _val_; }
+#ifdef OSPL_DDS_CXX11
+    void UUID(std::string&& _val_) { this->UUID_ = _val_; }
+#endif
     float temp() const { return this->temp_; }
     float& temp() { return this->temp_; }
     void temp(float _val_) { this->temp_ = _val_; }

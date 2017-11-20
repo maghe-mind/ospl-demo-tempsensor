@@ -6,10 +6,10 @@ enum TemperatureScale {
 
 
 struct TempSensorType {
- short id;
+ string UUID;
  float temp;
  float hum;
 TemperatureScale scale;
 };
 
-#pragma keylist TempSensorType id
+#pragma keylist TempSensorType UUID

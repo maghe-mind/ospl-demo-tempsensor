@@ -26,7 +26,7 @@ struct _TempSensorType ;
 extern  v_copyin_result __TempSensorType__copyIn(c_base base, const class TempSensorType *from, struct _TempSensorType *to);
 extern  void __TempSensorType__copyOut(const void *_from, void *_to);
 struct _TempSensorType {
-    c_short id;
+    c_string UUID;
     c_float temp;
     c_float hum;
     enum _TemperatureScale scale;
