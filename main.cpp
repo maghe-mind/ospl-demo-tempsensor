@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "tempsensor_DCPS.hpp"
 #include "DDSManager.h"
-#include "Items.h"
+#include "handlers/DDSListenerHandler.h"
 #include <thread>
 
 template<>
@@ -21,48 +21,39 @@ public:
 };
 
 
-void writeOnTopic(std::string partitionName, TempSensorType ts){
-
+void writeOnTopic(std::string partitionName, TempSensorType ts) {
     std::cout << "Publisher" << std::endl;
     DDSPublisher<TempSensorType> ddsPublisher(partitionName);
     ddsPublisher.write(ts);
 }
-
-void readFromTopic(std::string partitionName ){
-    DDSReader<TempSensorType> reader(partitionName);
-
-    reader.initReader(10);
-    std::vector<TempSensorType> samples;
-    reader.readAll(samples);
-
-    for (int i = 0; i < samples.size(); i++) {
-
-        std::cout << "UUID " << samples[i].UUID() << std::endl;
-        std::cout << "Hum " << samples[i].hum() << std::endl;
-        std::cout << "temp " << samples[i].temp() << std::endl << std::flush;
-    }
-
-}
-
 
 
 int main() {
 
     std::string partitionName = "DemoTempSensor";
 
+    DDSListenerHandler ddsListenerHandler(partitionName);
+
+    std::thread t1([&ddsListenerHandler] {
+        ddsListenerHandler.Run();
+    });
+
+
     TemperatureScale scale = TemperatureScale::CELSIUS;
-    TempSensorType ts;
-    ts.UUID("3");
-    ts.hum(75.0F);
-    ts.temp(30.0F);
-    ts.scale(scale);
+    int progressiveNumber = 0;
+    while (true) {
 
-    writeOnTopic(partitionName, ts);
+        TempSensorType ts;
+        ts.UUID(std::to_string(progressiveNumber++));
+        ts.hum(75.0F + rand() % 10);
+        ts.temp(30.0F + rand() % 5);
+        ts.scale(scale);
 
+        writeOnTopic(partitionName, ts);
+        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    }
 
-
-    readFromTopic (partitionName);
-
+    //t1.join();
 
     /*
     Example: read exists

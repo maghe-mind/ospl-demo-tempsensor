@@ -46,7 +46,7 @@ include_directories(
 
 message("${IDL_GENERATED_CPP}")
 
-set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED_CPP}) #Add implementation.cpp and implement.h?? *Tommaso*
+set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED_CPP} handlers/DDSListenerHandler.cpp handlers/DDSListenerHandler.h) #Add implementation.cpp and implement.h?? *Tommaso*
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
 target_link_libraries(${EXECUTABLE_NAME}
