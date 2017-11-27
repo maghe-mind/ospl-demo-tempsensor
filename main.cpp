@@ -62,7 +62,8 @@ int main() {
 
           writeOnTopic(SENSIBO_HOUSE_PARTITION, ts);
           std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-      }*/
+      }
+*/
 
 
     //t1.join();

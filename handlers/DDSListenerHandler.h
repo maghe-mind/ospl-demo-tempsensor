@@ -16,4 +16,6 @@ public:
 
 private:
     DDSSubscriber<Mind::Actuation_Command> ddsSubscriber;
+
+    bool deviceExist(std::string partitionName, std::string canditateDeviceUUID);
 };
