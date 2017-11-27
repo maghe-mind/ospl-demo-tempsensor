@@ -46,11 +46,15 @@ include_directories(
 
 message("${IDL_GENERATED_CPP}")
 
-set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED_CPP} handlers/DDSListenerHandler.cpp handlers/DDSListenerHandler.h) #Add implementation.cpp and implement.h?? *Tommaso*
+set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED_CPP}
+        handlers/DDSListenerHandler.cpp
+        handlers/DDSListenerHandler.h
+        Simulation/DDSPublisherSim.cpp
+        Simulation/DDSPublisherSim.h)
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
-target_link_libraries(${EXECUTABLE_NAME}
-        -L/usr/lib/x86_64-linux-gnu/ -lpthread)
+target_link_libraries(${EXECUTABLE_NAME} pthread)
+#target_link_libraries(${EXECUTABLE_NAME} uuid) #fatal error: uuid: No such file or directory
 
 # Add OpenSplice dirs
 target_link_libraries(${EXECUTABLE_NAME} ${OpenSplice_LIBRARIES})

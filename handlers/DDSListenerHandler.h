@@ -10,10 +10,10 @@ class DDSListenerHandler {
 public:
     DDSListenerHandler(std::string partitionName) : ddsSubscriber(partitionName) {}
 
-    void ProcessActuationCommand(TempSensorType type);
+    void ProcessActuationCommand(Mind::Actuation_Command actuationCommand);
 
     void Run();
 
 private:
-    DDSSubscriber<TempSensorType> ddsSubscriber;
+    DDSSubscriber<Mind::Actuation_Command> ddsSubscriber;
 };

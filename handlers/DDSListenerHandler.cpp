@@ -6,21 +6,24 @@
 #include "DDSListenerHandler.h"
 #include "tempsensor_DCPS.hpp"
 
-void DDSListenerHandler::ProcessActuationCommand(TempSensorType type) {
-    std::cout << "UUID " << type.UUID() << std::endl;
-    std::cout << "Hum " << type.hum() << std::endl;
-    std::cout << "temp " << type.temp() << std::endl << std::flush;
+void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuationCommand) {
+    std::cout << "UUID " << actuationCommand.UUID() << std::endl;
+    //std::cout << "Hum " << actuationCommand.commands() << std::endl;
+    // std::cout << "temp " << actuationCommand.temp() << std::endl << std::flush;
 }
 
 void DDSListenerHandler::Run() {
     ddsSubscriber.init();
 
     while (true) {
-        std::vector<TempSensorType> received_data;
+        std::cout << "waiting..." << std::endl;
+        std::vector<Mind::Actuation_Command> received_data;
         ddsSubscriber.wait(received_data);
-        std::cout << "Founded: " << received_data.size() << std::endl;
-        for (const auto &d: received_data) {
-            ProcessActuationCommand(d);
+        if (received_data.size()>0) {
+            std::cout << "Found: " << received_data.size() << std::endl;
+            for (const auto &d: received_data) {
+                ProcessActuationCommand(d);
+            }
         }
     }
 }

@@ -6,8 +6,11 @@
 #include "DDSManager.h"
 #include "handlers/DDSListenerHandler.h"
 #include <thread>
+#include "../defines.h"
+#include "Simulation/DDSPublisherSim.h"
 
-template<>
+/*
+ template<>
 class DDSConf<TempSensorType> {
 public:
     static ConfData get() {
@@ -21,37 +24,46 @@ public:
 };
 
 
-void writeOnTopic(std::string partitionName, TempSensorType ts) {
+
+
+ void writeOnTopic(std::string partitionName, TempSensorType ts) {
     std::cout << "Publisher" << std::endl;
-    DDSPublisher<TempSensorType> ddsPublisher(partitionName);
+    DDSPublisher<TempSensorType> ddsPublisher(SENSIBO_HOUSE_PARTITION);
     ddsPublisher.write(ts);
 }
+*/
 
 
 int main() {
 
-    std::string partitionName = "DemoTempSensor";
 
-    DDSListenerHandler ddsListenerHandler(partitionName);
+    DDSListenerHandler ddsListenerHandler(SENSIBO_HOUSE_PARTITION);
 
     std::thread t1([&ddsListenerHandler] {
         ddsListenerHandler.Run();
     });
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+    DDSPublisherSim simPublisher;
+    simPublisher.publishActuationCommand();
+
+    t1.join();
 
 
-    TemperatureScale scale = TemperatureScale::CELSIUS;
-    int progressiveNumber = 0;
-    while (true) {
+/*      TemperatureScale scale = TemperatureScale::CELSIUS;
+      int progressiveNumber = 0;
+      while (true) {
 
-        TempSensorType ts;
-        ts.UUID(std::to_string(progressiveNumber++));
-        ts.hum(75.0F + rand() % 10);
-        ts.temp(30.0F + rand() % 5);
-        ts.scale(scale);
+          TempSensorType ts;
+          ts.UUID(std::to_string(progressiveNumber++));
+          ts.hum(75.0F + rand() % 10);
+          ts.temp(30.0F + rand() % 5);
+          ts.scale(scale);
 
-        writeOnTopic(partitionName, ts);
-        std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-    }
+          writeOnTopic(SENSIBO_HOUSE_PARTITION, ts);
+          std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+      }*/
+
 
     //t1.join();
 
