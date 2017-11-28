@@ -50,7 +50,7 @@ set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED
         handlers/DDSListenerHandler.cpp
         handlers/DDSListenerHandler.h
         Simulation/DDSPublisherSim.cpp
-        Simulation/DDSPublisherSim.h handlers/DDSInboxHandler.cpp handlers/DDSInboxHandler.h)
+        Simulation/DDSPublisherSim.h handlers/DDSInboxHandler.cpp handlers/DDSInboxHandler.h Simulation/ScenarioSimulator.cpp Simulation/ScenarioSimulator.h)
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
 target_link_libraries(${EXECUTABLE_NAME} pthread)

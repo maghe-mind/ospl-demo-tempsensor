@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "DDSListenerHandler.h"
-
 #include "../defines.h"
 
 void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuationCommand) {
@@ -12,26 +11,29 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
     std::cout << "UUID: " << actuationCommand.UUID() << std::endl;
 
     for (auto const &itemCommand: actuationCommand.commands()) {
-        if (itemCommand.itemCategory() == Mind::Category::CATEGORY_HEATING_COOLING_POMPA_CALORE) {
+        if (itemCommand.itemCategory() == Mind::Category::CATEGORY_HEATING_COOLING_SENSIBO) {
 
-            //TODO extract device UUID from command
-            std::string canditateDeviceUUID = "XXX";
 
-            if (deviceExist(SENSIBO_HOUSE_PARTITION, canditateDeviceUUID)) {
+            if (deviceExist(SENSIBO_HOUSE_PARTITION, itemCommand.UUID())) {
 
                 //DO STAFF
 
                 DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
-/*
-                TemperatureScale scale = TemperatureScale::CELSIUS;
+                Mind::SensiboSky sensiboSky;
+                sensiboSky.UUID("kvDso2fP");
+                sensiboSky.MACAddress("f0:c7:7f:d4:16:02");
+                sensiboSky.on(false);
+                sensiboSky.mode(Mind::SensiboMode::modeAuto);
+                sensiboSky.targetTemperature(25);
+                sensiboSky.temperatureScale(Mind::SensiboTemperatureScale::C);
+                sensiboSky.fanlevel(Mind::SensiboFanLevel::fanAuto);
+                sensiboSky.swing(Mind::SensiboSwing::swingStopped);
+                sensiboSky.UUIDAmbience("Ambience");
+                sensiboSky.UUIDRoom("Room");
+                sensiboSky.UUIDFloor("Floor");
+                sensiboSky.UUIDHouse("House");
 
-                TempSensorType ts;
-                ts.UUID("1234567890");
-                ts.hum(75.0F + rand() % 10);
-                ts.temp(30.0F + rand() % 5);
-                ts.scale(scale);*/
-
-                //ddsPublisher.write(ts);
+                ddsPublisher.write(sensiboSky);
             }
         }
     }
@@ -39,8 +41,9 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
 
 
 bool DDSListenerHandler::deviceExist(std::string partitionName, std::string canditateDeviceUUID) {
-    DDSReader<Mind::PompaCalore> reader(partitionName);
-    std::vector<Mind::PompaCalore> devices;
+    DDSReader<Mind::SensiboSky> reader(partitionName);
+    reader.initReader(60);
+    std::vector<Mind::SensiboSky> devices;
     reader.readAll(devices);
 
     for (auto const &device: devices) {

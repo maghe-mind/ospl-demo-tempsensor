@@ -19,9 +19,9 @@ int DDSPublisherSim::publishActuationCommand() {
     actuation_command.UUID();
 
     Mind::Item_Command c;
-    c.UUID("cb00f253-bdba-4fbd-9018-56058ec75c59");
+    c.UUID("kvDso2fP"); // device UUID
     c.command("activity command: set temperature 30 C");
-    c.itemCategory(Mind::Category::CATEGORY_HEATING_COOLING_POMPA_CALORE);
+    c.itemCategory(Mind::Category::CATEGORY_HEATING_COOLING_SENSIBO);
     actuation_command.commands().push_back(c);
 
     for (int i = 0; i < 10; ++i) {
