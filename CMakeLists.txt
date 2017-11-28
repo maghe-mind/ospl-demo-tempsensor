@@ -34,6 +34,8 @@ file(GLOB IDL_GENERATED_CPP
         )
 
 find_package(OpenSplice REQUIRED)
+find_package(OpenSSL)
+
 
 # Folders visible in the IDE project explorer
 include_directories(
@@ -50,7 +52,16 @@ set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED
         handlers/DDSListenerHandler.cpp
         handlers/DDSListenerHandler.h
         Simulation/DDSPublisherSim.cpp
-        Simulation/DDSPublisherSim.h handlers/DDSInboxHandler.cpp handlers/DDSInboxHandler.h Simulation/ScenarioSimulator.cpp Simulation/ScenarioSimulator.h)
+        Simulation/DDSPublisherSim.h
+        handlers/DDSInboxHandler.cpp
+        handlers/DDSInboxHandler.h
+        Simulation/ScenarioSimulator.cpp
+        Simulation/ScenarioSimulator.h
+        sensiboManager/SensiboDevice.cpp
+        sensiboManager/SensiboDevice.h
+        sensiboManager/SensiboManager.cpp
+        sensiboManager/SensiboManager.h
+        )
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
 target_link_libraries(${EXECUTABLE_NAME} pthread)
@@ -58,3 +69,4 @@ target_link_libraries(${EXECUTABLE_NAME} pthread)
 
 # Add OpenSplice dirs
 target_link_libraries(${EXECUTABLE_NAME} ${OpenSplice_LIBRARIES})
+target_link_libraries(${EXECUTABLE_NAME} ${OPENSSL_LIBRARIES})

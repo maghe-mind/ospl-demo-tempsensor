@@ -3,16 +3,45 @@
 
 #include <iostream>
 #include <algorithm>
-#include "DDSManager.h"
 #include <thread>
+#include <dds_json.h>
+#include "DDSManager.h"
 #include "defines.h"
-#include "Simulation/ScenarioSimulator.h"
+#include "sensiboManager/SensiboManager.h"
 
 
 
 int main() {
 
-    DDSListenerHandler ddsListenerHandler(SENSIBO_HOUSE_PARTITION);
+    SensiboManager sensiboManager(SENSIBO_HOST, SENSIBO_PORT);
+    auto devices = sensiboManager.GetDevicesInfo();
+
+    for (auto const &device : devices) {
+        std::cout << device.first  // string (key)
+                  << ':'
+                  << device.second.toString() // string's value
+                  << std::endl;
+    }
+
+    json j2 = {
+            {"acState", {
+                                {"on", false},
+                                {"targetTemperature", 23},
+                                {"temperatureUnit", "C"},
+                                {"mode", "auto"},
+                                {"swing", "rangeFull"}
+                        }
+            }
+    };
+    std::string contentType = "application/json";
+
+
+
+    for (auto const &device : devices){
+        auto responsePost = sensiboManager.PostAcState(device.second.getPod(), j2.dump(), contentType);
+    }
+
+  /*  DDSListenerHandler ddsListenerHandler(SENSIBO_HOUSE_PARTITION);
     std::thread t1([&ddsListenerHandler] {
         ddsListenerHandler.Run();
     });
@@ -22,7 +51,7 @@ int main() {
     scenarioSimulator.createScenario();
 
     t1.join();
-
+*/
 
     /*
     Example: read exists

@@ -11,4 +11,10 @@
 
 #define SENSIBO_DEVICE_PARTITION "Mind_Sensibo" //TODO: change!
 
+
+#define SENSIBO_HOST "home.sensibo.com"
+#define SENSIBO_PORT 443
+#define SENSIBO_APIKEY "FdNABENzMCuRt7niVUgSm8oxVvXi85"
+
+
 #endif //TEMPSENSOR_DEFINES_H
