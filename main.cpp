@@ -2,11 +2,10 @@
 
 #include <iostream>
 #include <algorithm>
-#include "tempsensor_DCPS.hpp"
 #include "DDSManager.h"
 #include "handlers/DDSListenerHandler.h"
 #include <thread>
-#include "../defines.h"
+#include "defines.h"
 #include "Simulation/DDSPublisherSim.h"
 
 /*

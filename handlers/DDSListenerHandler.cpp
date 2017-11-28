@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include "DDSListenerHandler.h"
-#include "tempsensor_DCPS.hpp"
+
 #include "../defines.h"
 
 void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuationCommand) {
@@ -21,17 +21,17 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
 
                 //DO STAFF
 
-                DDSPublisher<TempSensorType> ddsPublisher(SENSIBO_DEVICE_PARTITION);
-
+                DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
+/*
                 TemperatureScale scale = TemperatureScale::CELSIUS;
 
                 TempSensorType ts;
                 ts.UUID("1234567890");
                 ts.hum(75.0F + rand() % 10);
                 ts.temp(30.0F + rand() % 5);
-                ts.scale(scale);
+                ts.scale(scale);*/
 
-                ddsPublisher.write(ts);
+                //ddsPublisher.write(ts);
             }
         }
     }

@@ -26,9 +26,9 @@ file(GLOB IDL_GENERATED_CPP
         "${IDL_GENERATED_PATH}/*.cpp"
         "${IDL_GENERATED_PATH}/*.h"
         "${IDL_GENERATED_PATH}/*.hpp"
-        "${MY_IDL_GENERATED_PATH}/*.cpp"
-        "${MY_IDL_GENERATED_PATH}/*.h"
-        "${MY_IDL_GENERATED_PATH}/*.hpp"
+        #"${MY_IDL_GENERATED_PATH}/*.cpp"
+       # "${MY_IDL_GENERATED_PATH}/*.h"
+       # "${MY_IDL_GENERATED_PATH}/*.hpp"
         "${MIND_POST_PROCESSING}/*.h"
         "${MIND_DDS_LIBRARY}/*.h"
         )

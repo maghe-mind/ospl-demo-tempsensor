@@ -3,7 +3,6 @@
 //
 
 #include <DDSManager.h>
-#include <tempsensor.h>
 
 class DDSListenerHandler {
 
