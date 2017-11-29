@@ -3,6 +3,7 @@
 //
 
 #include <DDSManager.h>
+#include "../sensiboManager/SensiboDevice.h"
 
 class DDSListenerHandler {
 
@@ -17,4 +18,6 @@ private:
     DDSSubscriber<Mind::Actuation_Command> ddsSubscriber;
 
     bool deviceExist(std::string partitionName, std::string canditateDeviceUUID);
+
+    void publishSensiboDeviceOnDDS(SensiboDevice device);
 };

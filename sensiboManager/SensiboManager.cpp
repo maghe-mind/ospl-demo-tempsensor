@@ -53,7 +53,8 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
         std::string id = parsedJsonResponse["result"][0]["id"];
         bool on = parsedJsonResponse["result"][0]["acState"]["on"];
         std::string mode = parsedJsonResponse["result"][0]["acState"]["mode"];
-        std::vector<std::string> noFanModes = {"dry", "auto", "heat"};
+
+        std::vector<std::string> noFanModes = {"dry", "auto"};
         std::string fanLevel;
         if (std::find(noFanModes.begin(), noFanModes.end(), mode) == noFanModes.end())
             fanLevel = parsedJsonResponse["result"][0]["acState"]["fanLevel"];
@@ -65,7 +66,7 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
 
         std::vector<std::string> noTemperature = {"fan"};
         int targetTemperature;
-        if (std::find(noFanModes.begin(), noFanModes.end(), mode) == noFanModes.end())
+        if (std::find(noTemperature.begin(), noTemperature.end(), mode) == noTemperature.end())
             targetTemperature = parsedJsonResponse["result"][0]["acState"]["targetTemperature"];
         else
             targetTemperature = -1;
@@ -204,14 +205,22 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
 
         std::string mode = EnumSensiboModeToString[(int) sensiboNewAcState.getMode()];
 
+        std::string fanLevel;
+        if(sensiboNewAcState.getFanLevel()=="NA"){
+            fanLevel="low";
+        }
+        else{
+            fanLevel=sensiboNewAcState.getFanLevel();
+        }
 
         json j2 = {
                 {"acState", {
                                     {"on", on},
-                                    //{"targetTemperature", sensiboNewAcState.getTargetTemperature()},
+                                    {"targetTemperature", sensiboNewAcState.getTargetTemperature()},
                                     {"temperatureUnit", sensiboNewAcState.getTemperatureUnit()},
                                     {"mode", mode},
-                                    {"swing", sensiboNewAcState.getSwing()}
+                                    {"swing", sensiboNewAcState.getSwing()},
+                                    {"fanLevel", fanLevel}
                             }
                 }
         };

@@ -13,7 +13,7 @@ void ScenarioSimulator::createScenario() {
     sensiboSky.mode(Mind::SensiboMode::modeAuto);
     sensiboSky.targetTemperature(25);
     sensiboSky.temperatureScale(Mind::SensiboTemperatureScale::C);
-    sensiboSky.fanlevel(Mind::SensiboFanLevel::fanAuto);
+    sensiboSky.fanlevel(Mind::SensiboFanLevel::fanLow);
     sensiboSky.swing(Mind::SensiboSwing::swingStopped);
     sensiboSky.UUIDAmbience("Ambience");
     sensiboSky.UUIDRoom("Room");

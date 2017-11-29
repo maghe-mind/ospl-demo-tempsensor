@@ -20,15 +20,24 @@ int DDSPublisherSim::publishActuationCommand() {
 
     Mind::Item_Command c01;
     c01.UUID("kvDso2fP"); // device UUID
-    c01.command("mode auto");
+    c01.command("mode heat");
     c01.itemCategory(Mind::Category::CATEGORY_HEATING_COOLING_SENSIBO);
     actuation_command.commands().push_back(c01);
 
     std::cout << "publishing " << actuation_command.UUID() << std::endl;
-    actuation_command.UUID("ModeAUTO");
+    actuation_command.UUID("ModeHeat");
     publisher.write(actuation_command);
 
-    Mind::Item_Command c02;
+
+
+
+
+
+
+
+
+
+  /*  Mind::Item_Command c02;
     c02.UUID("kvDso2fP"); // device UUID
     c02.command("targetTemperature 26");
     c02.itemCategory(Mind::Category::CATEGORY_HEATING_COOLING_SENSIBO);
@@ -37,7 +46,7 @@ int DDSPublisherSim::publishActuationCommand() {
     std::cout << "publishing " << actuation_command.UUID() << std::endl;
     actuation_command.UUID("ModeAUTO");
     publisher.write(actuation_command);
-
+*/
 
     //std::this_thread::sleep_for(std::chrono::milliseconds(5000));
 
