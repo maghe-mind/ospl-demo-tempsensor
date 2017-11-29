@@ -14,6 +14,7 @@
 #include <iostream>
 #include <memory>
 
+const std::string EnumSensiboModeToString [5] = { "dry","auto","heat","fan","cool"};
 
 class SensiboManager {
 
@@ -44,6 +45,10 @@ private:
     std::vector<std::string> GetPods();
 
     bool UpdateOn(std::string property, std::string value);
+
+    Mind::SensiboMode parseSensiboMode(std::string commandSensiboMode);
+
+    bool parserSensinboOn(std::string commandSensiboOn);
 };
 
 

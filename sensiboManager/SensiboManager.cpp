@@ -26,12 +26,13 @@ SensiboManager::SensiboManager(std::string host, int port) :
 
 SensiboDevice SensiboManager::GetDeviceInfo(std::string pod) {
 
+    std::string macAddress = SensiboManager::GetField(pod, "macAddress");
     std::string room = SensiboManager::GetField(pod, "room");
     std::string roomName = json::parse(room)["room"]["name"];
     std::string rawdata = SensiboManager::GetRawData(pod);
     SensiboAcState sensiboCurrentAcState = SensiboManager::GetCurrentAcState(pod);
 
-    SensiboDevice sensiboDevice(pod, roomName, rawdata, sensiboCurrentAcState);
+    SensiboDevice sensiboDevice(pod, macAddress, roomName, rawdata, sensiboCurrentAcState);
 
 
     return sensiboDevice;
@@ -52,12 +53,10 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
         std::string id = parsedJsonResponse["result"][0]["id"];
         bool on = parsedJsonResponse["result"][0]["acState"]["on"];
         std::string mode = parsedJsonResponse["result"][0]["acState"]["mode"];
-
-
         std::vector<std::string> noFanModes = {"dry", "auto", "heat"};
         std::string fanLevel;
         if (std::find(noFanModes.begin(), noFanModes.end(), mode) == noFanModes.end())
-            fanLevel= parsedJsonResponse["result"][0]["acState"]["fanLevel"];
+            fanLevel = parsedJsonResponse["result"][0]["acState"]["fanLevel"];
         else
             fanLevel = "NA";
 
@@ -67,13 +66,14 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
         std::vector<std::string> noTemperature = {"fan"};
         int targetTemperature;
         if (std::find(noFanModes.begin(), noFanModes.end(), mode) == noFanModes.end())
-            targetTemperature= parsedJsonResponse["result"][0]["acState"]["targetTemperature"];
+            targetTemperature = parsedJsonResponse["result"][0]["acState"]["targetTemperature"];
         else
             targetTemperature = -1;
 
         std::string swing = parsedJsonResponse["result"][0]["acState"]["swing"];
 
-        acCurrentState = SensiboAcState(id, on, fanLevel, temperatureUnit, targetTemperature, mode, swing);
+
+        acCurrentState = SensiboAcState(id, on, fanLevel, temperatureUnit, targetTemperature, parseSensiboMode(mode), swing);
     } else {
         std::cout << "No response or respose code != 200" << std::endl;
         throw std::exception(); // TODO: discuss how to manage the misbehavior
@@ -144,14 +144,12 @@ bool SensiboManager::PostAcState(std::string uid, std::basic_string<char> messag
     std::shared_ptr<httplib::Response> response = cli.post(path.c_str(), message, contentType.c_str());
 
     if (response && response->status == 200) {
-        std::cout << "PostAcState response" << std::endl;
-        std::cout << "Status: " << response->status << std::endl;
-        std::cout << "Body:" << response->body << std::endl;
         return true;
     } else {
+        return false;// TODO: discuss how to manage the misbehavior
         std::cout << "No response or respose code != 200" << std::endl;
         std::cout << response->status << std::endl;
-        throw std::exception(); // TODO: discuss how to manage the misbehavior
+        throw std::exception();
     }
 }
 
@@ -176,16 +174,10 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
         if (splittedItemCommand.size() == 2) {
 
             if (splittedItemCommand[0] == "on") {
-
-                std::stringstream ss(splittedItemCommand[1]);
-                if (!(ss >> std::boolalpha >> on)) {
-                    // Parsing error.
-                }
-                sensiboNewAcState.setOn(on);
-
+                sensiboNewAcState.setOn(parserSensinboOn(splittedItemCommand[1]));
             }
             if (splittedItemCommand[0] == "mode") {
-                sensiboNewAcState.setMode(splittedItemCommand[1]);
+                sensiboNewAcState.setMode(parseSensiboMode(splittedItemCommand[1]));
             }
             if (splittedItemCommand[0] == "targetTemperature") {
                 int value = std::atoi(splittedItemCommand[1].c_str());
@@ -204,13 +196,15 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
             return false;
         }
 
+        std::string mode = EnumSensiboModeToString[(int) sensiboNewAcState.getMode()];
+
 
         json j2 = {
                 {"acState", {
                                     {"on", on},
-                                    {"targetTemperature", sensiboNewAcState.getTargetTemperature()},
+                                    //{"targetTemperature", sensiboNewAcState.getTargetTemperature()},
                                     {"temperatureUnit", sensiboNewAcState.getTemperatureUnit()},
-                                    {"mode", sensiboNewAcState.getMode()},
+                                    {"mode", mode},
                                     {"swing", sensiboNewAcState.getSwing()}
                             }
                 }
@@ -222,13 +216,13 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
         std::string body = j2.dump();
 
 
-        PostAcState(deviceUUID, j2.dump(), contentType);
+        return PostAcState(deviceUUID, j2.dump(), contentType);
 
 
     } catch (...) {
         //   logger->error("Error while parsing command: %v sent to: %v", command->command(), command->UUID());
     }
-    return true;
+    return false;
 }
 
 bool SensiboManager::UpdateOn(std::string property, std::string value) {
@@ -236,6 +230,34 @@ bool SensiboManager::UpdateOn(std::string property, std::string value) {
 
     return false;
 }
+
+
+//TODO:: to move to another class. Helper? Static?
+Mind::SensiboMode SensiboManager::parseSensiboMode(std::string commandSensiboMode) {
+
+    if (commandSensiboMode == "dry") {
+        return Mind::SensiboMode::modeDry;
+    } else if (commandSensiboMode == "auto") {
+        return Mind::SensiboMode::modeAuto;
+    } else if (commandSensiboMode == "heat") {
+        return Mind::SensiboMode::modeHeat;
+    } else if (commandSensiboMode == "fan") {
+        return Mind::SensiboMode::modeFan;
+    } else if (commandSensiboMode == "cool") {
+        return Mind::SensiboMode::modeCool;
+    }
+}
+
+bool SensiboManager::parserSensinboOn(std::string commandSensiboOn) {
+    std::stringstream ss(commandSensiboOn);
+    bool on;
+    if (!(ss >> std::boolalpha >> on)) {
+        // Parsing error.
+        //TODO: throw exception
+    }
+    return on;
+}
+
 
 
 /*

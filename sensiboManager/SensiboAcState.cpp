@@ -7,7 +7,7 @@
 SensiboAcState::SensiboAcState() {}
 
 SensiboAcState::SensiboAcState(std::string id, bool on, std::string fanLevel, std::string temperatureUnit,
-                               int targetTemperature, std::string mode, std::string swing) {
+                               int targetTemperature, Mind::SensiboMode mode, std::string swing) {
     this->id = id;
     this->on = on;
     this->fanLevel = fanLevel;
@@ -31,6 +31,14 @@ bool SensiboAcState::isOn() const {
 
 void SensiboAcState::setOn(bool on) {
     SensiboAcState::on = on;
+}
+
+Mind::SensiboMode SensiboAcState::getMode() const {
+    return mode;
+}
+
+void SensiboAcState::setMode(Mind::SensiboMode mode) {
+    SensiboAcState::mode = mode;
 }
 
 const std::string &SensiboAcState::getFanLevel() const {
@@ -57,14 +65,6 @@ void SensiboAcState::setTargetTemperature(int targetTemperature) {
     SensiboAcState::targetTemperature = targetTemperature;
 }
 
-const std::string &SensiboAcState::getMode() const {
-    return mode;
-}
-
-void SensiboAcState::setMode(const std::string &mode) {
-    SensiboAcState::mode = mode;
-}
-
 const std::string &SensiboAcState::getSwing() const {
     return swing;
 }
@@ -72,3 +72,9 @@ const std::string &SensiboAcState::getSwing() const {
 void SensiboAcState::setSwing(const std::string &swing) {
     SensiboAcState::swing = swing;
 }
+
+
+
+
+
+

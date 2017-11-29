@@ -6,13 +6,14 @@
 #define TEMPSENSOR_SENSIBOACSTATE_H
 
 #include <iostream>
+#include <Items.h>
 
 class SensiboAcState {
 public:
     SensiboAcState();
 
     SensiboAcState(std::string id, bool on, std::string fanLevel, std::string temperatureUnit, int targetTemperature,
-                   std::string mode, std::string swing);
+                   Mind::SensiboMode mode,std::string swing);
 
 public:
     const std::string &getId() const;
@@ -35,10 +36,6 @@ public:
 
     void setTargetTemperature(int targetTemperature);
 
-    const std::string &getMode() const;
-
-    void setMode(const std::string &mode);
-
     const std::string &getSwing() const;
 
     void setSwing(const std::string &swing);
@@ -49,7 +46,13 @@ private:
     std::string fanLevel;
     std::string temperatureUnit;
     int targetTemperature;
-    std::string mode;
+public:
+    Mind::SensiboMode getMode() const;
+
+    void setMode(Mind::SensiboMode mode);
+
+private:
+    Mind::SensiboMode mode;
     std::string swing;
 };
 

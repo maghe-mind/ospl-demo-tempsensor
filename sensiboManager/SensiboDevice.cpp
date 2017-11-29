@@ -5,9 +5,10 @@
 #include "SensiboDevice.h"
 #include "SensiboAcState.h"
 
-SensiboDevice::SensiboDevice(std::string pod, std::string roomName, std::string rawdata,
+SensiboDevice::SensiboDevice(std::string pod, std::string macAddress,std::string roomName, std::string rawdata,
                              SensiboAcState sensiboCurrentAcState) {
     this->pod = pod;
+    this->macAddress = macAddress;
     this->roomName = roomName;
     this->rawdata = rawdata;
     this->sensiboCurrentAcState = sensiboCurrentAcState;
@@ -19,6 +20,10 @@ std::string SensiboDevice::toString() const {
 
 std::string SensiboDevice::getPod() const {
     return pod;
+}
+
+std::string SensiboDevice::getMacAddress() const {
+    return macAddress;
 }
 
 std::string SensiboDevice::getRoomName() const {

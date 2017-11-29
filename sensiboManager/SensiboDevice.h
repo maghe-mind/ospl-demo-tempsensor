@@ -13,11 +13,14 @@
 class SensiboDevice {
 
 public:
-    SensiboDevice(std::string pod, std::string roomName, std::string rawdata, SensiboAcState sensiboCurrentAcState);
+    SensiboDevice(std::string pod, std::string macAddress, std::string roomName, std::string rawdata,
+                  SensiboAcState sensiboCurrentAcState);
 
     std::string toString() const;
 
     std::string getPod() const;
+
+    std::string getMacAddress() const;
 
     std::string getRoomName() const;
 
@@ -30,6 +33,7 @@ private:
     std::string roomName;
     std::string rawdata;
     SensiboAcState sensiboCurrentAcState;
+    std::string macAddress;
 };
 
 
