@@ -30,6 +30,8 @@ public:
     void PrintResponse(std::shared_ptr<httplib::Response> states);
     */
 
+    bool ActuateCommand(std::string itemCommand, std::string deviceUUID);
+
 private:
     httplib::SSLClient cli;
 
@@ -40,6 +42,8 @@ private:
     std::string GetRawData(std::string pod);
 
     std::vector<std::string> GetPods();
+
+    bool UpdateOn(std::string property, std::string value);
 };
 
 

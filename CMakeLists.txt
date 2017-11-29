@@ -61,6 +61,8 @@ set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED
         sensiboManager/SensiboDevice.h
         sensiboManager/SensiboManager.cpp
         sensiboManager/SensiboManager.h
+        sensiboManager/SensiboAcState.cpp
+        sensiboManager/SensiboAcState.h
         sensiboManager/SensiboAcState.cpp sensiboManager/SensiboAcState.h)
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 

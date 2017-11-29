@@ -5,6 +5,7 @@
 #include <iostream>
 #include "DDSListenerHandler.h"
 #include "../defines.h"
+#include "../sensiboManager/SensiboManager.h"
 
 void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuationCommand) {
 
@@ -15,6 +16,14 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
 
 
             if (deviceExist(SENSIBO_HOUSE_PARTITION, itemCommand.UUID())) {
+
+                SensiboManager sensiboManager(SENSIBO_HOST, SENSIBO_PORT);
+                auto boolean = sensiboManager.ActuateCommand(itemCommand.command(), itemCommand.UUID());
+
+
+
+
+
 
                 //DO STAFF
 

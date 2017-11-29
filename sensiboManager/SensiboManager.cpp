@@ -9,9 +9,11 @@
 #include <iostream>
 #include <memory>
 #include "SensiboManager.h"
-#include "../define.h"
+#include "../defines.h"
 #include "SensiboAcState.h"
 #include "SensiboDevice.h"
+#include "boost/algorithm/string.hpp"
+#include <algorithm>
 
 using json = nlohmann::json;
 
@@ -31,6 +33,7 @@ SensiboDevice SensiboManager::GetDeviceInfo(std::string pod) {
 
     SensiboDevice sensiboDevice(pod, roomName, rawdata, sensiboCurrentAcState);
 
+
     return sensiboDevice;
 }
 
@@ -43,18 +46,34 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
     std::shared_ptr<httplib::Response> response = cli.get(path.c_str());
 
     if (response && response->status == 200) {
+        std::cout << "Body:" << response->body << std::endl;
         auto parsedJsonResponse = json::parse(response->body);  //TODO: parse explicitly. Something more elegant?
 
         std::string id = parsedJsonResponse["result"][0]["id"];
         bool on = parsedJsonResponse["result"][0]["acState"]["on"];
-        std::string fanLevel = parsedJsonResponse["result"][0]["acState"]["fanLevel"];
-        std::string temperatureUnit = parsedJsonResponse["result"][0]["acState"]["temperatureUnit"];
-        int targetTemperature = parsedJsonResponse["result"][0]["acState"]["targetTemperature"];
         std::string mode = parsedJsonResponse["result"][0]["acState"]["mode"];
+
+
+        std::vector<std::string> noFanModes = {"dry", "auto", "heat"};
+        std::string fanLevel;
+        if (std::find(noFanModes.begin(), noFanModes.end(), mode) == noFanModes.end())
+            fanLevel= parsedJsonResponse["result"][0]["acState"]["fanLevel"];
+        else
+            fanLevel = "NA";
+
+
+        std::string temperatureUnit = parsedJsonResponse["result"][0]["acState"]["temperatureUnit"];
+
+        std::vector<std::string> noTemperature = {"fan"};
+        int targetTemperature;
+        if (std::find(noFanModes.begin(), noFanModes.end(), mode) == noFanModes.end())
+            targetTemperature= parsedJsonResponse["result"][0]["acState"]["targetTemperature"];
+        else
+            targetTemperature = -1;
+
         std::string swing = parsedJsonResponse["result"][0]["acState"]["swing"];
 
         acCurrentState = SensiboAcState(id, on, fanLevel, temperatureUnit, targetTemperature, mode, swing);
-
     } else {
         std::cout << "No response or respose code != 200" << std::endl;
         throw std::exception(); // TODO: discuss how to manage the misbehavior
@@ -122,7 +141,7 @@ std::string SensiboManager::GetRawData(std::string pod) {
 bool SensiboManager::PostAcState(std::string uid, std::basic_string<char> message, std::string contentType) {
 
     std::string path = "/api/v2/pods/" + uid + "/acStates?apiKey=" + SENSIBO_APIKEY;
-    std::shared_ptr<httplib::Response> response = cli.get(path.c_str());
+    std::shared_ptr<httplib::Response> response = cli.post(path.c_str(), message, contentType.c_str());
 
     if (response && response->status == 200) {
         std::cout << "PostAcState response" << std::endl;
@@ -134,6 +153,88 @@ bool SensiboManager::PostAcState(std::string uid, std::basic_string<char> messag
         std::cout << response->status << std::endl;
         throw std::exception(); // TODO: discuss how to manage the misbehavior
     }
+}
+
+bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceUUID) {
+
+
+    SensiboDevice sensiboDevice = GetDeviceInfo(deviceUUID);
+    SensiboAcState sensiboNewAcState = sensiboDevice.getSensiboCurrentAcState();
+
+
+    std::vector<std::string> splittedItemCommand;
+    boost::split(splittedItemCommand, itemCommand, boost::is_any_of(" "));
+
+    for (auto const &value:splittedItemCommand) {
+        std::cout << value << std::endl;
+    }
+
+    try {
+
+        bool on = true;
+
+        if (splittedItemCommand.size() == 2) {
+
+            if (splittedItemCommand[0] == "on") {
+
+                std::stringstream ss(splittedItemCommand[1]);
+                if (!(ss >> std::boolalpha >> on)) {
+                    // Parsing error.
+                }
+                sensiboNewAcState.setOn(on);
+
+            }
+            if (splittedItemCommand[0] == "mode") {
+                sensiboNewAcState.setMode(splittedItemCommand[1]);
+            }
+            if (splittedItemCommand[0] == "targetTemperature") {
+                int value = std::atoi(splittedItemCommand[1].c_str());
+                sensiboNewAcState.setTargetTemperature(value);
+            }
+            if (splittedItemCommand[0] == "temperatureScale") {
+                sensiboNewAcState.setTemperatureUnit(splittedItemCommand[1]);
+            }
+            if (splittedItemCommand[0] == "fanLevel") {
+                sensiboNewAcState.setFanLevel(splittedItemCommand[1]);
+            }
+            if (splittedItemCommand[0] == "swing") {
+                sensiboNewAcState.setSwing(splittedItemCommand[1]);
+            }
+        } else {
+            return false;
+        }
+
+
+        json j2 = {
+                {"acState", {
+                                    {"on", on},
+                                    {"targetTemperature", sensiboNewAcState.getTargetTemperature()},
+                                    {"temperatureUnit", sensiboNewAcState.getTemperatureUnit()},
+                                    {"mode", sensiboNewAcState.getMode()},
+                                    {"swing", sensiboNewAcState.getSwing()}
+                            }
+                }
+        };
+
+
+        std::string contentType = "application/json";
+
+        std::string body = j2.dump();
+
+
+        PostAcState(deviceUUID, j2.dump(), contentType);
+
+
+    } catch (...) {
+        //   logger->error("Error while parsing command: %v sent to: %v", command->command(), command->UUID());
+    }
+    return true;
+}
+
+bool SensiboManager::UpdateOn(std::string property, std::string value) {
+
+
+    return false;
 }
 
 
