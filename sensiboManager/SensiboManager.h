@@ -15,6 +15,7 @@
 #include <memory>
 
 const std::string EnumSensiboModeToString [5] = { "dry","auto","heat","fan","cool"};
+const std::string EnumSensiboTemperatureScaleToString [2] = { "C","F"};
 
 class SensiboManager {
 
@@ -49,6 +50,8 @@ private:
     Mind::SensiboMode parseSensiboMode(std::string commandSensiboMode);
 
     bool parserSensinboOn(std::string commandSensiboOn);
+
+    Mind::SensiboTemperatureScale parseSensiboTemperatureUnit(std::string commandSensiboTemperatureUnit);
 };
 
 

@@ -12,8 +12,8 @@ class SensiboAcState {
 public:
     SensiboAcState();
 
-    SensiboAcState(std::string id, bool on, std::string fanLevel, std::string temperatureUnit, int targetTemperature,
-                   Mind::SensiboMode mode,std::string swing);
+    SensiboAcState(std::string id, bool on, std::string fanLevel, Mind::SensiboTemperatureScale temperatureUnit, int targetTemperature,
+                   Mind::SensiboMode mode, std::string swing);
 
 public:
     const std::string &getId() const;
@@ -24,13 +24,17 @@ public:
 
     void setOn(bool on);
 
+    Mind::SensiboMode getMode() const;
+
+    void setMode(Mind::SensiboMode mode);
+
     const std::string &getFanLevel() const;
 
     void setFanLevel(const std::string &fanLevel);
 
-    const std::string &getTemperatureUnit() const;
+    Mind::SensiboTemperatureScale getTemperatureUnit() const;
 
-    void setTemperatureUnit(const std::string &temperatureUnit);
+    void setTemperatureUnit(Mind::SensiboTemperatureScale temperatureUnit);
 
     int getTargetTemperature() const;
 
@@ -44,14 +48,8 @@ private:
     std::string id;
     bool on;
     std::string fanLevel;
-    std::string temperatureUnit;
+    Mind::SensiboTemperatureScale temperatureUnit;
     int targetTemperature;
-public:
-    Mind::SensiboMode getMode() const;
-
-    void setMode(Mind::SensiboMode mode);
-
-private:
     Mind::SensiboMode mode;
     std::string swing;
 };

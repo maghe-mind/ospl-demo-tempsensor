@@ -74,7 +74,8 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
         std::string swing = parsedJsonResponse["result"][0]["acState"]["swing"];
 
 
-        acCurrentState = SensiboAcState(id, on, fanLevel, temperatureUnit, targetTemperature, parseSensiboMode(mode), swing);
+        acCurrentState = SensiboAcState(id, on, fanLevel, parseSensiboTemperatureUnit(temperatureUnit), targetTemperature, parseSensiboMode(mode),
+                                        swing);
     } else {
         std::cout << "No response or respose code != 200" << std::endl;
         throw std::exception(); // TODO: discuss how to manage the misbehavior
@@ -125,10 +126,10 @@ std::string SensiboManager::GetField(std::string pod, std::string fieldName) {
 
     if (response && response->status == 200) {
         auto parsedJsonResponse = json::parse(response->body);  //TODO: parse explicitly. Something more elegant?
-       // responseResult = parsedJsonResponse["result"].dump();
-        if(fieldName==""){//TODO: it is useful for raw data. A better approach? Another method?
+        // responseResult = parsedJsonResponse["result"].dump();
+        if (fieldName == "") {//TODO: it is useful for raw data. A better approach? Another method?
             responseResult = parsedJsonResponse["result"].dump();
-        }else{
+        } else {
             responseResult = parsedJsonResponse["result"][fieldName].dump();
         }
 
@@ -191,7 +192,8 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
                 sensiboNewAcState.setTargetTemperature(value);
             }
             if (splittedItemCommand[0] == "temperatureScale") {
-                sensiboNewAcState.setTemperatureUnit(splittedItemCommand[1]);
+
+                sensiboNewAcState.setTemperatureUnit(parseSensiboTemperatureUnit(splittedItemCommand[1]));
             }
             if (splittedItemCommand[0] == "fanLevel") {
                 sensiboNewAcState.setFanLevel(splittedItemCommand[1]);
@@ -206,18 +208,21 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
         std::string mode = EnumSensiboModeToString[(int) sensiboNewAcState.getMode()];
 
         std::string fanLevel;
-        if(sensiboNewAcState.getFanLevel()=="NA"){
-            fanLevel="low";
+        if (sensiboNewAcState.getFanLevel() == "NA") {
+            fanLevel = "low";
+        } else {
+            fanLevel = sensiboNewAcState.getFanLevel();
         }
-        else{
-            fanLevel=sensiboNewAcState.getFanLevel();
-        }
+
+
+        std::string temperatureUnit = EnumSensiboTemperatureScaleToString[(int) sensiboNewAcState.getTemperatureUnit()];
+
 
         json j2 = {
                 {"acState", {
                                     {"on", on},
                                     {"targetTemperature", sensiboNewAcState.getTargetTemperature()},
-                                    {"temperatureUnit", sensiboNewAcState.getTemperatureUnit()},
+                                    {"temperatureUnit", temperatureUnit},
                                     {"mode", mode},
                                     {"swing", sensiboNewAcState.getSwing()},
                                     {"fanLevel", fanLevel}
@@ -260,6 +265,8 @@ Mind::SensiboMode SensiboManager::parseSensiboMode(std::string commandSensiboMod
         return Mind::SensiboMode::modeFan;
     } else if (commandSensiboMode == "cool") {
         return Mind::SensiboMode::modeCool;
+    } else {
+        throw;//TODO: throw exception
     }
 }
 
@@ -268,9 +275,19 @@ bool SensiboManager::parserSensinboOn(std::string commandSensiboOn) {
     bool on;
     if (!(ss >> std::boolalpha >> on)) {
         // Parsing error.
-        //TODO: throw exception
+        throw;//TODO: throw exception
     }
     return on;
+}
+
+Mind::SensiboTemperatureScale SensiboManager::parseSensiboTemperatureUnit(std::string commandSensiboTemperatureUnit) {
+    if (commandSensiboTemperatureUnit == "C") {
+        return Mind::SensiboTemperatureScale::C;
+    } else if (commandSensiboTemperatureUnit == "F") {
+        return Mind::SensiboTemperatureScale::F;
+    } else {
+        throw;//TODO: throw exception
+    }
 }
 
 

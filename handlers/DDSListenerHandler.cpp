@@ -70,10 +70,8 @@ void DDSListenerHandler::publishSensiboDeviceOnDDS(SensiboDevice device) {
 
     sensiboSky.on(device.getSensiboCurrentAcState().isOn());
     sensiboSky.mode(device.getSensiboCurrentAcState().getMode());
-    //sensiboSky.on(false);
-    //sensiboSky.mode(Mind::SensiboMode::modeAuto);
     sensiboSky.targetTemperature(25);
-    sensiboSky.temperatureScale(Mind::SensiboTemperatureScale::C);
+    sensiboSky.temperatureScale(device.getSensiboCurrentAcState().getTemperatureUnit());
     sensiboSky.fanlevel(Mind::SensiboFanLevel::fanAuto);
     sensiboSky.swing(Mind::SensiboSwing::swingStopped);
     sensiboSky.UUIDAmbience("Ambience");
