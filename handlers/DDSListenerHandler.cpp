@@ -8,7 +8,6 @@
 #include "../sensiboManager/SensiboManager.h"
 
 
-
 void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuationCommand) {
 
     std::cout << "ActuationCommand UUID: " << actuationCommand.UUID() << std::endl;
@@ -17,31 +16,39 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
         if ((itemCommand.itemCategory() == Mind::Category::CATEGORY_HEATING_COOLING_SENSIBO) &&
             (deviceExist(SENSIBO_HOUSE_PARTITION, itemCommand.UUID()))) {
 
-                SensiboManager sensiboManager(SENSIBO_HOST, SENSIBO_PORT); //TODO: singleton?
-                auto result = sensiboManager.ActuateCommand(itemCommand.command(), itemCommand.UUID());
+            SensiboManager sensiboManager(SENSIBO_HOST, SENSIBO_PORT); //TODO: singleton?
+           // auto result = sensiboManager.ActuateCommand(itemCommand.command(), itemCommand.UUID());
 
-                if(result){
-                    SensiboDevice sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
-                    DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
+            bool result=true;
+            if (result) {
+               SensiboDevice sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
 
-                    Mind::SensiboSky sensiboSky;
-                    sensiboSky.UUID(sensiboDevice.getPod());
-                    sensiboSky.MACAddress(sensiboDevice.getMacAddress());
-                    sensiboSky.on(sensiboDevice.getSensiboCurrentAcState().isOn());
-                    sensiboSky.mode(sensiboDevice.getSensiboCurrentAcState().getMode());
-                    sensiboSky.targetTemperature(25);
-                    sensiboSky.temperatureScale(Mind::SensiboTemperatureScale::C);
-                    sensiboSky.fanlevel(Mind::SensiboFanLevel::fanAuto);
-                    sensiboSky.swing(Mind::SensiboSwing::swingStopped);
-                    sensiboSky.UUIDAmbience("Ambience");
-                    sensiboSky.UUIDRoom("Room");
-                    sensiboSky.UUIDFloor("Floor");
-                    sensiboSky.UUIDHouse("House");
 
-                    ddsPublisher.write(sensiboSky);
+                DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
+                Mind::SensiboSky sensiboSky;
+                sensiboSky.UUID(sensiboDevice.getPod());
 
-                }
-                  }
+                std::string mac = sensiboDevice.getMacAddress();
+                sensiboSky.MACAddress(mac);
+               // sensiboSky.on(sensiboDevice.getSensiboCurrentAcState().isOn());
+                //sensiboSky.mode(sensiboDevice.getSensiboCurrentAcState().getMode());
+
+
+                sensiboSky.on(false);
+                sensiboSky.mode(Mind::SensiboMode::modeAuto);
+                sensiboSky.targetTemperature(25);
+                sensiboSky.temperatureScale(Mind::SensiboTemperatureScale::C);
+                sensiboSky.fanlevel(Mind::SensiboFanLevel::fanAuto);
+                sensiboSky.swing(Mind::SensiboSwing::swingStopped);
+                sensiboSky.UUIDAmbience("Ambience");
+                sensiboSky.UUIDRoom("Room");
+                sensiboSky.UUIDFloor("Floor");
+                sensiboSky.UUIDHouse("House");
+
+                ddsPublisher.write(sensiboSky);
+
+            }
+        }
     }
 }
 

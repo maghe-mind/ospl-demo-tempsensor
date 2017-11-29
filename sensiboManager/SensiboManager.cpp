@@ -28,7 +28,7 @@ SensiboDevice SensiboManager::GetDeviceInfo(std::string pod) {
 
     std::string macAddress = SensiboManager::GetField(pod, "macAddress");
     std::string room = SensiboManager::GetField(pod, "room");
-    std::string roomName = json::parse(room)["room"]["name"];
+    std::string roomName = json::parse(room)["name"];
     std::string rawdata = SensiboManager::GetRawData(pod);
     SensiboAcState sensiboCurrentAcState = SensiboManager::GetCurrentAcState(pod);
 
@@ -124,7 +124,13 @@ std::string SensiboManager::GetField(std::string pod, std::string fieldName) {
 
     if (response && response->status == 200) {
         auto parsedJsonResponse = json::parse(response->body);  //TODO: parse explicitly. Something more elegant?
-        responseResult = parsedJsonResponse["result"].dump();
+       // responseResult = parsedJsonResponse["result"].dump();
+        if(fieldName==""){//TODO: it is useful for raw data. A better approach? Another method?
+            responseResult = parsedJsonResponse["result"].dump();
+        }else{
+            responseResult = parsedJsonResponse["result"][fieldName].dump();
+        }
+
 
     } else {
         std::cout << "No response or respose code != 200" << std::endl;
