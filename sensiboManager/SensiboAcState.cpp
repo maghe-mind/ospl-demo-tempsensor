@@ -6,8 +6,9 @@
 
 SensiboAcState::SensiboAcState() {}
 
-SensiboAcState::SensiboAcState(std::string id, bool on, std::string fanLevel, Mind::SensiboTemperatureScale temperatureUnit,
-                               int targetTemperature, Mind::SensiboMode mode, std::string swing) {
+SensiboAcState::SensiboAcState(std::string id, bool on, Mind::SensiboFanLevel fanLevel,
+                               Mind::SensiboTemperatureScale temperatureUnit,
+                               int targetTemperature, Mind::SensiboMode mode, Mind::SensiboSwing swing) {
     this->id = id;
     this->on = on;
     this->fanLevel = fanLevel;
@@ -41,14 +42,13 @@ void SensiboAcState::setMode(Mind::SensiboMode mode) {
     SensiboAcState::mode = mode;
 }
 
-const std::string &SensiboAcState::getFanLevel() const {
+Mind::SensiboFanLevel SensiboAcState::getFanLevel() const {
     return fanLevel;
 }
 
-void SensiboAcState::setFanLevel(const std::string &fanLevel) {
+void SensiboAcState::setFanLevel(Mind::SensiboFanLevel fanLevel) {
     SensiboAcState::fanLevel = fanLevel;
 }
-
 
 
 int SensiboAcState::getTargetTemperature() const {
@@ -59,11 +59,12 @@ void SensiboAcState::setTargetTemperature(int targetTemperature) {
     SensiboAcState::targetTemperature = targetTemperature;
 }
 
-const std::string &SensiboAcState::getSwing() const {
+
+Mind::SensiboSwing SensiboAcState::getSwing() const {
     return swing;
 }
 
-void SensiboAcState::setSwing(const std::string &swing) {
+void SensiboAcState::setSwing(Mind::SensiboSwing swing) {
     SensiboAcState::swing = swing;
 }
 
@@ -73,6 +74,51 @@ Mind::SensiboTemperatureScale SensiboAcState::getTemperatureUnit() const {
 
 void SensiboAcState::setTemperatureUnit(Mind::SensiboTemperatureScale temperatureUnit) {
     SensiboAcState::temperatureUnit = temperatureUnit;
+}
+
+nlohmann::json SensiboAcState::getJsonAcState() {
+
+    std::string mode = EnumSensiboModeToString[(int) getMode()];
+
+    std::string fanLevel;
+    if (getFanLevel() == Mind::SensiboFanLevel::fanNA) {
+        fanLevel = "low";
+    } else {
+        fanLevel = EnumSensiboFabLevelToString[(int) getFanLevel()];
+    }
+
+    std::string temperatureUnit;
+    if (getTemperatureUnit() == Mind::SensiboTemperatureScale::NA) {
+        temperatureUnit = "C";
+    } else {
+        temperatureUnit = EnumSensiboTemperatureScaleToString[(int) getTemperatureUnit()];
+    }
+
+    int temperature;
+    if (getTargetTemperature() < 16 || getTargetTemperature() > 30) {
+        temperature = 20;
+    } else {
+        temperature = getTargetTemperature();
+    }
+
+
+    std::string swing = EnumSensiboSwingToString[(int) getSwing()];
+
+
+
+
+    nlohmann::json j2 = {
+            {"acState", {
+                                {"on", on},
+                                {"targetTemperature", temperature},
+                                {"temperatureUnit", temperatureUnit},
+                                {"mode", mode},
+                                {"swing", swing},
+                                {"fanLevel", fanLevel} //TODO: finish
+                        }
+            }
+    };
+    return j2;
 }
 
 

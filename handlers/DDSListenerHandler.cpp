@@ -6,6 +6,7 @@
 #include "DDSListenerHandler.h"
 #include "../defines.h"
 #include "../sensiboManager/SensiboManager.h"
+#include "../sensiboManager/SensiboDevice.h"
 
 
 void DDSListenerHandler::Run() {
@@ -24,6 +25,7 @@ void DDSListenerHandler::Run() {
     }
 }
 
+
 void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuationCommand) {
 
     std::cout << "ActuationCommand UUID: " << actuationCommand.UUID() << std::endl;
@@ -37,6 +39,8 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
             auto result = sensiboManager.ActuateCommand(itemCommand.command(), itemCommand.UUID());
             if (result) {
                 SensiboDevice sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
+                // SensiboAcState acState("kvDso2fP",true, Mind::SensiboFanLevel::fanMedium, Mind::SensiboTemperatureScale::C, 25, Mind::SensiboMode::modeHeat,Mind::SensiboSwing::swingStopped);
+                //SensiboDevice sensiboDevice("kvDso2fP","MACDDRESS", "roomName","rawdata",acState);
                 publishSensiboDeviceOnDDS(sensiboDevice);
             }
         }
@@ -45,7 +49,7 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
 
 
 bool DDSListenerHandler::deviceExist(std::string partitionName, std::string canditateDeviceUUID) {
-    DDSReader<Mind::SensiboSky> reader(partitionName);
+    DDSReader <Mind::SensiboSky> reader(partitionName);
     reader.initReader(60);
     std::vector<Mind::SensiboSky> devices;
     reader.readAll(devices);
@@ -61,19 +65,17 @@ bool DDSListenerHandler::deviceExist(std::string partitionName, std::string cand
 
 
 void DDSListenerHandler::publishSensiboDeviceOnDDS(SensiboDevice device) {
-    DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
+    DDSPublisher <Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
     Mind::SensiboSky sensiboSky;
+
     sensiboSky.UUID(device.getPod());
-
-    std::string mac = device.getMacAddress();
-    sensiboSky.MACAddress(mac);
-
+    sensiboSky.MACAddress(device.getMacAddress());
     sensiboSky.on(device.getSensiboCurrentAcState().isOn());
     sensiboSky.mode(device.getSensiboCurrentAcState().getMode());
-    sensiboSky.targetTemperature(25);
+    sensiboSky.targetTemperature(device.getSensiboCurrentAcState().getTargetTemperature());
     sensiboSky.temperatureScale(device.getSensiboCurrentAcState().getTemperatureUnit());
-    sensiboSky.fanlevel(Mind::SensiboFanLevel::fanAuto);
-    sensiboSky.swing(Mind::SensiboSwing::swingStopped);
+    sensiboSky.fanlevel(device.getSensiboCurrentAcState().getFanLevel());
+    sensiboSky.swing(device.getSensiboCurrentAcState().getSwing());
     sensiboSky.UUIDAmbience("Ambience");
     sensiboSky.UUIDRoom("Room");
     sensiboSky.UUIDFloor("Floor");

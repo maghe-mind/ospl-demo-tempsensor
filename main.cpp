@@ -17,7 +17,7 @@ int main() {
     std::thread t1([&ddsListenerHandler] {
         ddsListenerHandler.Run();
     });
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 
     ScenarioSimulator scenarioSimulator;
     scenarioSimulator.createScenario();

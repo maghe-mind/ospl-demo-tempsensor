@@ -14,9 +14,6 @@
 #include <iostream>
 #include <memory>
 
-const std::string EnumSensiboModeToString [5] = { "dry","auto","heat","fan","cool"};
-const std::string EnumSensiboTemperatureScaleToString [2] = { "C","F"};
-
 class SensiboManager {
 
 public:
@@ -34,9 +31,6 @@ public:
 
     bool ActuateCommand(std::string itemCommand, std::string deviceUUID);
 
-private:
-    httplib::SSLClient cli;
-
     SensiboAcState GetCurrentAcState(std::string pod);
 
     std::string GetField(std::string pod, std::string fieldName);
@@ -45,6 +39,12 @@ private:
 
     std::vector<std::string> GetPods();
 
+
+private:
+    httplib::SSLClient cli;
+
+
+
     bool UpdateOn(std::string property, std::string value);
 
     Mind::SensiboMode parseSensiboMode(std::string commandSensiboMode);
@@ -52,6 +52,10 @@ private:
     bool parserSensinboOn(std::string commandSensiboOn);
 
     Mind::SensiboTemperatureScale parseSensiboTemperatureUnit(std::string commandSensiboTemperatureUnit);
+
+    Mind::SensiboFanLevel parseSensiboFanLevel(std::string commandSensiboFanLevel);
+
+    Mind::SensiboSwing parseSensiboSwing(std::string commandSensiboSwing);
 };
 
 

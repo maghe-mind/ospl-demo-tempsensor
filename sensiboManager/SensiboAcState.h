@@ -7,13 +7,22 @@
 
 #include <iostream>
 #include <Items.h>
+#include "../lib/json.hpp"
+
+const std::string EnumSensiboModeToString[5] = {"dry", "auto", "heat", "fan", "cool"};
+const std::string EnumSensiboFabLevelToString[6] = {"low", "medium_low", "medium", "high", "auto", "NA"};
+const std::string EnumSensiboTemperatureScaleToString[3] = {"C", "F", "NA"};
+const std::string EnumSensiboSwingToString[2] = {"stopped", "rangeFull"};
 
 class SensiboAcState {
 public:
     SensiboAcState();
 
-    SensiboAcState(std::string id, bool on, std::string fanLevel, Mind::SensiboTemperatureScale temperatureUnit, int targetTemperature,
-                   Mind::SensiboMode mode, std::string swing);
+    SensiboAcState(std::string id, bool on, Mind::SensiboFanLevel fanLevel,
+                   Mind::SensiboTemperatureScale temperatureUnit, int targetTemperature,
+                   Mind::SensiboMode mode, Mind::SensiboSwing swing);
+
+    nlohmann::json getJsonAcState();
 
 public:
     const std::string &getId() const;
@@ -28,9 +37,9 @@ public:
 
     void setMode(Mind::SensiboMode mode);
 
-    const std::string &getFanLevel() const;
+    Mind::SensiboFanLevel getFanLevel() const;
 
-    void setFanLevel(const std::string &fanLevel);
+    void setFanLevel(Mind::SensiboFanLevel fanLevel);
 
     Mind::SensiboTemperatureScale getTemperatureUnit() const;
 
@@ -40,18 +49,19 @@ public:
 
     void setTargetTemperature(int targetTemperature);
 
-    const std::string &getSwing() const;
+    Mind::SensiboSwing getSwing() const;
 
-    void setSwing(const std::string &swing);
+    void setSwing(Mind::SensiboSwing swing);
+
 
 private:
     std::string id;
     bool on;
-    std::string fanLevel;
+    Mind::SensiboFanLevel fanLevel;
     Mind::SensiboTemperatureScale temperatureUnit;
     int targetTemperature;
     Mind::SensiboMode mode;
-    std::string swing;
+    Mind::SensiboSwing swing;
 };
 
 
