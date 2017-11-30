@@ -2,11 +2,11 @@
 // Created by maghe on 29/11/17.
 //
 
-#include "SensiboAcState.h"
+#include "SensiboSkyAcState.h"
 
-SensiboAcState::SensiboAcState() {}
+SensiboSkyAcState::SensiboSkyAcState() {}
 
-SensiboAcState::SensiboAcState(std::string id, bool on, Mind::SensiboFanLevel fanLevel,
+SensiboSkyAcState::SensiboSkyAcState(std::string id, bool on, Mind::SensiboFanLevel fanLevel,
                                Mind::SensiboTemperatureScale temperatureUnit,
                                int targetTemperature, Mind::SensiboMode mode, Mind::SensiboSwing swing) {
     this->id = id;
@@ -18,65 +18,65 @@ SensiboAcState::SensiboAcState(std::string id, bool on, Mind::SensiboFanLevel fa
     this->swing = swing;
 }
 
-const std::string &SensiboAcState::getId() const {
+const std::string &SensiboSkyAcState::getId() const {
     return id;
 }
 
-void SensiboAcState::setId(const std::string &id) {
-    SensiboAcState::id = id;
+void SensiboSkyAcState::setId(const std::string &id) {
+    SensiboSkyAcState::id = id;
 }
 
-bool SensiboAcState::isOn() const {
+bool SensiboSkyAcState::isOn() const {
     return on;
 }
 
-void SensiboAcState::setOn(bool on) {
-    SensiboAcState::on = on;
+void SensiboSkyAcState::setOn(bool on) {
+    SensiboSkyAcState::on = on;
 }
 
-Mind::SensiboMode SensiboAcState::getMode() const {
+Mind::SensiboMode SensiboSkyAcState::getMode() const {
     return mode;
 }
 
-void SensiboAcState::setMode(Mind::SensiboMode mode) {
-    SensiboAcState::mode = mode;
+void SensiboSkyAcState::setMode(Mind::SensiboMode mode) {
+    SensiboSkyAcState::mode = mode;
 }
 
-Mind::SensiboFanLevel SensiboAcState::getFanLevel() const {
+Mind::SensiboFanLevel SensiboSkyAcState::getFanLevel() const {
     return fanLevel;
 }
 
-void SensiboAcState::setFanLevel(Mind::SensiboFanLevel fanLevel) {
-    SensiboAcState::fanLevel = fanLevel;
+void SensiboSkyAcState::setFanLevel(Mind::SensiboFanLevel fanLevel) {
+    SensiboSkyAcState::fanLevel = fanLevel;
 }
 
 
-int SensiboAcState::getTargetTemperature() const {
+int SensiboSkyAcState::getTargetTemperature() const {
     return targetTemperature;
 }
 
-void SensiboAcState::setTargetTemperature(int targetTemperature) {
-    SensiboAcState::targetTemperature = targetTemperature;
+void SensiboSkyAcState::setTargetTemperature(int targetTemperature) {
+    SensiboSkyAcState::targetTemperature = targetTemperature;
 }
 
 
-Mind::SensiboSwing SensiboAcState::getSwing() const {
+Mind::SensiboSwing SensiboSkyAcState::getSwing() const {
     return swing;
 }
 
-void SensiboAcState::setSwing(Mind::SensiboSwing swing) {
-    SensiboAcState::swing = swing;
+void SensiboSkyAcState::setSwing(Mind::SensiboSwing swing) {
+    SensiboSkyAcState::swing = swing;
 }
 
-Mind::SensiboTemperatureScale SensiboAcState::getTemperatureUnit() const {
+Mind::SensiboTemperatureScale SensiboSkyAcState::getTemperatureUnit() const {
     return temperatureUnit;
 }
 
-void SensiboAcState::setTemperatureUnit(Mind::SensiboTemperatureScale temperatureUnit) {
-    SensiboAcState::temperatureUnit = temperatureUnit;
+void SensiboSkyAcState::setTemperatureUnit(Mind::SensiboTemperatureScale temperatureUnit) {
+    SensiboSkyAcState::temperatureUnit = temperatureUnit;
 }
 
-nlohmann::json SensiboAcState::getJsonAcState() {
+nlohmann::json SensiboSkyAcState::getJsonAcState() {
 
     std::string mode = EnumSensiboModeToString[(int) getMode()];
 

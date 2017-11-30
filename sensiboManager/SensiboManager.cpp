@@ -16,22 +16,22 @@ SensiboManager::SensiboManager(std::string host, int port) :
 
 }
 
-SensiboDevice SensiboManager::GetDeviceInfo(std::string pod) {
+SensiboSky SensiboManager::GetDeviceInfo(std::string pod) {
 
     std::string macAddress = SensiboManager::GetField(pod, "macAddress");
     std::string room = SensiboManager::GetField(pod, "room");
     std::string roomName = nlohmann::json::parse(room)["name"];
     std::string rawdata = SensiboManager::GetRawData(pod);
-    SensiboAcState sensiboCurrentAcState = SensiboManager::GetCurrentAcState(pod);
+    SensiboSkyAcState sensiboCurrentAcState = SensiboManager::GetCurrentAcState(pod);
 
-    SensiboDevice sensiboDevice(pod, macAddress, roomName, rawdata, sensiboCurrentAcState);
+    SensiboSky sensiboDevice(pod, macAddress, roomName, rawdata, sensiboCurrentAcState);
 
     return sensiboDevice;
 }
 
-SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
+SensiboSkyAcState SensiboManager::GetCurrentAcState(std::string pod) {
 
-    SensiboAcState acCurrentState;
+    SensiboSkyAcState acCurrentState;
     //https://home.sensibo.com/api/v2/pods/kvDso2fP/acStates?apiKey=FdNABENzMCuRt7niVUgSm8oxVvXi85
     std::string path = "/api/v2/pods/" + pod + "/acStates?apiKey=" + SENSIBO_APIKEY;
     std::shared_ptr<httplib::Response> response = cli.get(path.c_str());
@@ -65,7 +65,7 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
         }
         Mind::SensiboSwing swing = parseSensiboSwing(parsedJsonResponse["result"][0]["acState"]["swing"]);
 
-        acCurrentState = SensiboAcState(id, on, fanLevel, temperatureUnit,
+        acCurrentState = SensiboSkyAcState(id, on, fanLevel, temperatureUnit,
                                         targetTemperature, mode,
                                         swing);
     } else {
@@ -75,13 +75,13 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
     return acCurrentState;
 }
 
-std::map<std::string, SensiboDevice> SensiboManager::GetDevicesInfo() {
+std::map<std::string, SensiboSky> SensiboManager::GetDevicesInfo() {
 
-    std::map<std::string, SensiboDevice> sensiboDevices;
+    std::map<std::string, SensiboSky> sensiboDevices;
     auto pods = SensiboManager::GetPods();
     for (const std::string &pod : pods) {
         auto sensiboDevice = SensiboManager::GetDeviceInfo(pod);
-        sensiboDevices.insert(std::pair<std::string, SensiboDevice>(pod, sensiboDevice));
+        sensiboDevices.insert(std::pair<std::string, SensiboSky>(pod, sensiboDevice));
     }
     return sensiboDevices;
 }
@@ -154,8 +154,8 @@ bool SensiboManager::PostAcState(std::string uid, std::basic_string<char> messag
 bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceUUID) {
 
     try {
-        SensiboDevice sensiboDevice = GetDeviceInfo(deviceUUID);
-        SensiboAcState sensiboNewAcState = sensiboDevice.getSensiboCurrentAcState();
+        SensiboSky sensiboDevice = GetDeviceInfo(deviceUUID);
+        SensiboSkyAcState sensiboNewAcState = sensiboDevice.getSensiboCurrentAcState();
 
         std::vector<std::string> splittedItemCommand;
         boost::split(splittedItemCommand, itemCommand, boost::is_any_of(" "));

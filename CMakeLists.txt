@@ -57,13 +57,13 @@ set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED
         handlers/DDSInboxHandler.h
         Simulation/ScenarioSimulator.cpp
         Simulation/ScenarioSimulator.h
-        sensiboManager/SensiboDevice.cpp
-        sensiboManager/SensiboDevice.h
+        sensiboManager/SensiboSky.cpp
+        sensiboManager/SensiboSky.h
         sensiboManager/SensiboManager.cpp
         sensiboManager/SensiboManager.h
-        sensiboManager/SensiboAcState.cpp
-        sensiboManager/SensiboAcState.h
-        sensiboManager/SensiboAcState.cpp sensiboManager/SensiboAcState.h)
+        sensiboManager/SensiboSkyAcState.cpp
+        sensiboManager/SensiboSkyAcState.h
+        sensiboManager/SensiboSkyAcState.cpp sensiboManager/SensiboSkyAcState.h)
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
 target_link_libraries(${EXECUTABLE_NAME} pthread)

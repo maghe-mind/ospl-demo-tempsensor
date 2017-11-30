@@ -7,16 +7,14 @@
 
 
 #include "iostream"
-#include "SensiboAcState.h"
+#include "SensiboSkyAcState.h"
 
 
-class SensiboDevice {
+class SensiboSky {
 
 public:
-    SensiboDevice(std::string pod, std::string macAddress, std::string roomName, std::string rawdata,
-                  SensiboAcState sensiboCurrentAcState);
-
-    std::string toString() const;
+    SensiboSky(std::string pod, std::string macAddress, std::string roomName, std::string rawdata,
+               SensiboSkyAcState sensiboCurrentAcState);
 
     std::string getPod() const;
 
@@ -26,13 +24,13 @@ public:
 
     std::string getRawdata() const;
 
-    SensiboAcState getSensiboCurrentAcState() const;
+    SensiboSkyAcState getSensiboCurrentAcState() const;
 
 private:
     std::string pod;
     std::string roomName;
     std::string rawdata;
-    SensiboAcState sensiboCurrentAcState;
+    SensiboSkyAcState sensiboCurrentAcState;
     std::string macAddress;
 };
 

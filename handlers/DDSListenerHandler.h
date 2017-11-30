@@ -3,7 +3,7 @@
 //
 
 #include <DDSManager.h>
-#include "../sensiboManager/SensiboDevice.h"
+#include "../sensiboManager/SensiboSky.h"
 
 class DDSListenerHandler {
 
@@ -19,5 +19,5 @@ private:
 
     bool deviceExist(std::string partitionName, std::string canditateDeviceUUID);
 
-    void publishSensiboDeviceOnDDS(SensiboDevice device);
+    void publishSensiboDeviceOnDDS(SensiboSky device);
 };

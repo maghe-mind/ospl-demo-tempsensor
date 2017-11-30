@@ -9,8 +9,8 @@
 
 #include "../lib/httplib.h"
 #include "../lib/json.hpp"
-#include "SensiboAcState.h"
-#include "SensiboDevice.h"
+#include "SensiboSkyAcState.h"
+#include "SensiboSky.h"
 #include <iostream>
 #include <memory>
 
@@ -19,9 +19,9 @@ class SensiboManager {
 public:
     SensiboManager(std::string host, int port);
 
-    SensiboDevice GetDeviceInfo(std::string pod);
+    SensiboSky GetDeviceInfo(std::string pod);
 
-    std::map<std::string, SensiboDevice> GetDevicesInfo();
+    std::map<std::string, SensiboSky> GetDevicesInfo();
 
     bool PostAcState(std::string uid, std::basic_string<char> message, std::string contentType);
 
@@ -31,7 +31,7 @@ public:
 
     bool ActuateCommand(std::string itemCommand, std::string deviceUUID);
 
-    SensiboAcState GetCurrentAcState(std::string pod);
+    SensiboSkyAcState GetCurrentAcState(std::string pod);
 
     std::string GetField(std::string pod, std::string fieldName);
 

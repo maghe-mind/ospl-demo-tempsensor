@@ -14,13 +14,13 @@ const std::string EnumSensiboFabLevelToString[6] = {"low", "medium_low", "medium
 const std::string EnumSensiboTemperatureScaleToString[3] = {"C", "F", "NA"};
 const std::string EnumSensiboSwingToString[2] = {"stopped", "rangeFull"};
 
-class SensiboAcState {
+class SensiboSkyAcState {
 public:
-    SensiboAcState();
+    SensiboSkyAcState();
 
-    SensiboAcState(std::string id, bool on, Mind::SensiboFanLevel fanLevel,
-                   Mind::SensiboTemperatureScale temperatureUnit, int targetTemperature,
-                   Mind::SensiboMode mode, Mind::SensiboSwing swing);
+    SensiboSkyAcState(std::string id, bool on, Mind::SensiboFanLevel fanLevel,
+                      Mind::SensiboTemperatureScale temperatureUnit, int targetTemperature,
+                      Mind::SensiboMode mode, Mind::SensiboSwing swing);
 
     nlohmann::json getJsonAcState();
 

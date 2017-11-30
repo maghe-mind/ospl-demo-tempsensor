@@ -6,7 +6,7 @@
 #include "DDSListenerHandler.h"
 #include "../defines.h"
 #include "../sensiboManager/SensiboManager.h"
-#include "../sensiboManager/SensiboDevice.h"
+#include "../sensiboManager/SensiboSky.h"
 
 
 void DDSListenerHandler::Run() {
@@ -37,10 +37,13 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
             SensiboManager sensiboManager(SENSIBO_HOST, SENSIBO_PORT); //TODO: singleton?
 
             auto result = sensiboManager.ActuateCommand(itemCommand.command(), itemCommand.UUID());
+
             if (result) {
-                SensiboDevice sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
-                // SensiboAcState acState("kvDso2fP",true, Mind::SensiboFanLevel::fanMedium, Mind::SensiboTemperatureScale::C, 25, Mind::SensiboMode::modeHeat,Mind::SensiboSwing::swingStopped);
-                //SensiboDevice sensiboDevice("kvDso2fP","MACDDRESS", "roomName","rawdata",acState);
+                //SensiboSky sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
+
+
+                SensiboSkyAcState acState("kvDso2fP",true, Mind::SensiboFanLevel::fanMedium, Mind::SensiboTemperatureScale::C, 25, Mind::SensiboMode::modeHeat,Mind::SensiboSwing::swingStopped);
+                SensiboSky sensiboDevice("kvDso2fP","MACDDRESS", "roomName","rawdata",acState);
                 publishSensiboDeviceOnDDS(sensiboDevice);
             }
         }
@@ -49,7 +52,7 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
 
 
 bool DDSListenerHandler::deviceExist(std::string partitionName, std::string canditateDeviceUUID) {
-    DDSReader <Mind::SensiboSky> reader(partitionName);
+    DDSReader<Mind::SensiboSky> reader(partitionName);
     reader.initReader(60);
     std::vector<Mind::SensiboSky> devices;
     reader.readAll(devices);
@@ -64,8 +67,8 @@ bool DDSListenerHandler::deviceExist(std::string partitionName, std::string cand
 }
 
 
-void DDSListenerHandler::publishSensiboDeviceOnDDS(SensiboDevice device) {
-    DDSPublisher <Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
+void DDSListenerHandler::publishSensiboDeviceOnDDS(SensiboSky device) {
+    DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
     Mind::SensiboSky sensiboSky;
 
     sensiboSky.UUID(device.getPod());
@@ -76,7 +79,7 @@ void DDSListenerHandler::publishSensiboDeviceOnDDS(SensiboDevice device) {
     sensiboSky.temperatureScale(device.getSensiboCurrentAcState().getTemperatureUnit());
     sensiboSky.fanlevel(device.getSensiboCurrentAcState().getFanLevel());
     sensiboSky.swing(device.getSensiboCurrentAcState().getSwing());
-    sensiboSky.UUIDAmbience("Ambience");
+    sensiboSky.UUIDAmbience("Ambience"); //TODO: how to manage these properties?
     sensiboSky.UUIDRoom("Room");
     sensiboSky.UUIDFloor("Floor");
     sensiboSky.UUIDHouse("House");
