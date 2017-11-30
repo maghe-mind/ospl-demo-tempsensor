@@ -45,8 +45,13 @@ SensiboAcState SensiboManager::GetCurrentAcState(std::string pod) {
         std::string id = parsedJsonResponse["result"][0]["id"];
         bool on = parsedJsonResponse["result"][0]["acState"]["on"];
         Mind::SensiboMode mode = parseSensiboMode(parsedJsonResponse["result"][0]["acState"]["mode"]);
-        Mind::SensiboFanLevel fanLevel = parseSensiboFanLevel(parsedJsonResponse["result"][0]["acState"]["fanLevel"]);
 
+        Mind::SensiboFanLevel fanLevel;
+        if ((mode != Mind::SensiboMode::modeAuto) && (mode != Mind::SensiboMode::modeDry)) {
+            fanLevel = parseSensiboFanLevel(parsedJsonResponse["result"][0]["acState"]["fanLevel"]);
+        } else {
+            fanLevel = Mind::SensiboFanLevel::fanNA;
+        }
 
         Mind::SensiboTemperatureScale temperatureUnit;
         int targetTemperature;
@@ -162,7 +167,7 @@ bool SensiboManager::ActuateCommand(std::string itemCommand, std::string deviceU
         if (splittedItemCommand.size() == 2) {
 
             if (splittedItemCommand[0] == "on") {
-                on =parserSensinboOn(splittedItemCommand[1]);
+                on = parserSensinboOn(splittedItemCommand[1]);
             } else if (splittedItemCommand[0] == "mode") {
                 sensiboNewAcState.setMode(parseSensiboMode(splittedItemCommand[1]));
             } else if (splittedItemCommand[0] == "targetTemperature") {

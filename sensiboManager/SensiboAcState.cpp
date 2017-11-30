@@ -101,24 +101,23 @@ nlohmann::json SensiboAcState::getJsonAcState() {
         temperature = getTargetTemperature();
     }
 
-
     std::string swing = EnumSensiboSwingToString[(int) getSwing()];
 
+    nlohmann::json jsonSensiboAcState;
+    jsonSensiboAcState["acState"]["on"] = on;
+    jsonSensiboAcState["acState"]["mode"] = mode;
+
+    if (getMode() != Mind::SensiboMode::modeFan) {
+        jsonSensiboAcState["acState"]["targetTemperature"] = temperature;
+        jsonSensiboAcState["acState"]["temperatureUnit"] = temperatureUnit;
+    }
+    if ((getMode() != Mind::SensiboMode::modeDry) || (getMode() != Mind::SensiboMode::modeAuto)) {
+        jsonSensiboAcState["acState"]["fanLevel"] = fanLevel;
+    }
+    jsonSensiboAcState["acState"]["swing"] = swing;
 
 
-
-    nlohmann::json j2 = {
-            {"acState", {
-                                {"on", on},
-                                {"targetTemperature", temperature},
-                                {"temperatureUnit", temperatureUnit},
-                                {"mode", mode},
-                                {"swing", swing},
-                                {"fanLevel", fanLevel} //TODO: finish
-                        }
-            }
-    };
-    return j2;
+    return jsonSensiboAcState;
 }
 
 

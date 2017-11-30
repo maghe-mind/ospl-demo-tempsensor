@@ -12,30 +12,22 @@
 
 int DDSPublisherSim::publishActuationCommand() {
 
-    // xg::Guid g = xg::newGuid();//TODO: how to use external lib
-
     DDSPublisher<Mind::Actuation_Command> publisher(SENSIBO_HOUSE_PARTITION);
     Mind::Actuation_Command actuation_command;
     actuation_command.UUID("First ActuationCommand");
 
+
+    std::string command= "targetTemperature 25";
+
     Mind::Item_Command c01;
     c01.UUID("kvDso2fP"); // device UUID
-    c01.command("mode heat");
+    c01.command(command);
     c01.itemCategory(Mind::Category::CATEGORY_HEATING_COOLING_SENSIBO);
     actuation_command.commands().push_back(c01);
 
     std::cout << "publishing " << actuation_command.UUID() << std::endl;
-    actuation_command.UUID("ModeHeat");
+    actuation_command.UUID(command);
     publisher.write(actuation_command);
-
-
-
-
-
-
-
-
-
 
   /*  Mind::Item_Command c02;
     c02.UUID("kvDso2fP"); // device UUID
@@ -48,7 +40,7 @@ int DDSPublisherSim::publishActuationCommand() {
     publisher.write(actuation_command);
 */
 
-    //std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     return 0;
 }
