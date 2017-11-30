@@ -9,9 +9,21 @@
 #include "defines.h"
 #include "sensiboManager/SensiboManager.h"
 #include "Simulation/ScenarioSimulator.h"
+#include "handlers/DDSInboxHandler.h"
+
 
 
 int main() {
+
+
+    DDSInboxHandler ddsInboxHandler;
+    std::thread t2([&ddsInboxHandler] {
+        ddsInboxHandler.DiscoverNewDevices();
+    });
+
+t2.join();
+
+
 
     DDSListenerHandler ddsListenerHandler(SENSIBO_HOUSE_PARTITION);
     std::thread t1([&ddsListenerHandler] {

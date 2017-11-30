@@ -26,7 +26,6 @@ public:
 
     bool PostAcState(std::string uid, std::basic_string<char> message, std::string contentType);
 
-
     bool ActuateCommand(std::string itemCommand, std::string deviceUUID);
 
     SensiboSkyAcState GetCurrentAcState(std::string pod);
