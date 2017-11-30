@@ -9,10 +9,13 @@
 
 #include "../lib/httplib.h"
 #include "../lib/json.hpp"
-#include "SensiboSkyAcState.h"
-#include "SensiboSky.h"
 #include <iostream>
 #include <memory>
+#include "SensiboSkyAcState.h"
+#include "SensiboSky.h"
+#include "SensiboParser.h"
+#include "boost/algorithm/string.hpp"
+#include "../defines.h"
 
 class SensiboManager {
 
@@ -21,13 +24,8 @@ public:
 
     SensiboSky GetDeviceInfo(std::string pod);
 
-    std::map<std::string, SensiboSky> GetDevicesInfo();
-
     bool PostAcState(std::string uid, std::basic_string<char> message, std::string contentType);
 
-    /*
-    void PrintResponse(std::shared_ptr<httplib::Response> states);
-    */
 
     bool ActuateCommand(std::string itemCommand, std::string deviceUUID);
 
@@ -39,23 +37,9 @@ public:
 
     std::vector<std::string> GetPods();
 
-
 private:
     httplib::SSLClient cli;
-
-
-
-    bool UpdateOn(std::string property, std::string value);
-
-    Mind::SensiboMode parseSensiboMode(std::string commandSensiboMode);
-
-    bool parserSensinboOn(std::string commandSensiboOn);
-
-    Mind::SensiboTemperatureScale parseSensiboTemperatureUnit(std::string commandSensiboTemperatureUnit);
-
-    Mind::SensiboFanLevel parseSensiboFanLevel(std::string commandSensiboFanLevel);
-
-    Mind::SensiboSwing parseSensiboSwing(std::string commandSensiboSwing);
+    SensiboParser sensiboParser;
 };
 
 

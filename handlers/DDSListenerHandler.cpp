@@ -39,11 +39,7 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
             auto result = sensiboManager.ActuateCommand(itemCommand.command(), itemCommand.UUID());
 
             if (result) {
-                //SensiboSky sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
-
-
-                SensiboSkyAcState acState("kvDso2fP",true, Mind::SensiboFanLevel::fanMedium, Mind::SensiboTemperatureScale::C, 25, Mind::SensiboMode::modeHeat,Mind::SensiboSwing::swingStopped);
-                SensiboSky sensiboDevice("kvDso2fP","MACDDRESS", "roomName","rawdata",acState);
+                SensiboSky sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
                 publishSensiboDeviceOnDDS(sensiboDevice);
             }
         }

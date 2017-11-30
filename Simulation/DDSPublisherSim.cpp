@@ -17,7 +17,7 @@ int DDSPublisherSim::publishActuationCommand() {
     actuation_command.UUID("First ActuationCommand");
 
 
-    std::string command= "targetTemperature 25";
+    std::string command= "targetTemperature 29";
 
     Mind::Item_Command c01;
     c01.UUID("kvDso2fP"); // device UUID
