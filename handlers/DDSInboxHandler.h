@@ -7,9 +7,9 @@
 
 #include <iostream>
 #include "../sensiboManager/SensiboManager.h"
+#include "DDSHandler.h"
 
-
-class DDSInboxHandler {
+class DDSInboxHandler: DDSHandler {
 
 public:
     DDSInboxHandler();

@@ -40,7 +40,7 @@ void DDSListenerHandler::ProcessActuationCommand(Mind::Actuation_Command actuati
 
             if (result) {
                 SensiboSky sensiboDevice = sensiboManager.GetDeviceInfo(itemCommand.UUID());
-                publishSensiboDeviceOnDDS(sensiboDevice);
+                publishSensiboDeviceOnDDS(sensiboDevice, SENSIBO_HOUSE_PARTITION);
             }
         }
     }
@@ -62,24 +62,4 @@ bool DDSListenerHandler::deviceExist(std::string partitionName, std::string cand
     return false;
 }
 
-
-void DDSListenerHandler::publishSensiboDeviceOnDDS(SensiboSky device) {
-    DDSPublisher<Mind::SensiboSky> ddsPublisher(SENSIBO_DEVICE_PARTITION);
-    Mind::SensiboSky sensiboSky;
-
-    sensiboSky.UUID(device.getPod());
-    sensiboSky.MACAddress(device.getMacAddress());
-    sensiboSky.on(device.getSensiboCurrentAcState().isOn());
-    sensiboSky.mode(device.getSensiboCurrentAcState().getMode());
-    sensiboSky.targetTemperature(device.getSensiboCurrentAcState().getTargetTemperature());
-    sensiboSky.temperatureScale(device.getSensiboCurrentAcState().getTemperatureUnit());
-    sensiboSky.fanlevel(device.getSensiboCurrentAcState().getFanLevel());
-    sensiboSky.swing(device.getSensiboCurrentAcState().getSwing());
-    sensiboSky.UUIDAmbience("Ambience"); //TODO: how to manage these properties?
-    sensiboSky.UUIDRoom("Room");
-    sensiboSky.UUIDFloor("Floor");
-    sensiboSky.UUIDHouse("House");
-
-    ddsPublisher.write(sensiboSky);
-}
 

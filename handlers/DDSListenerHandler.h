@@ -4,8 +4,9 @@
 
 #include <DDSManager.h>
 #include "../sensiboManager/SensiboSky.h"
+#include "DDSHandler.h"
 
-class DDSListenerHandler {
+class DDSListenerHandler:DDSHandler {
 
 public:
     DDSListenerHandler(std::string partitionName) : ddsSubscriber(partitionName) {}
@@ -19,5 +20,4 @@ private:
 
     bool deviceExist(std::string partitionName, std::string canditateDeviceUUID);
 
-    void publishSensiboDeviceOnDDS(SensiboSky device);
 };

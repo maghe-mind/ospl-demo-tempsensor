@@ -12,17 +12,16 @@
 #include "handlers/DDSInboxHandler.h"
 
 
-
 int main() {
 
+    //   ScenarioSimulator scenarioSimulator;
+    //  scenarioSimulator.createScenario();
 
     DDSInboxHandler ddsInboxHandler;
     std::thread t2([&ddsInboxHandler] {
         ddsInboxHandler.DiscoverNewDevices();
     });
-
-t2.join();
-
+    t2.join();
 
 
     DDSListenerHandler ddsListenerHandler(SENSIBO_HOUSE_PARTITION);
@@ -31,9 +30,8 @@ t2.join();
     });
     std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 
-    ScenarioSimulator scenarioSimulator;
-    scenarioSimulator.createScenario();
-
+    // ScenarioSimulator scenarioSimulator;
+    // scenarioSimulator.createScenario();
     t1.join();
 
     /*

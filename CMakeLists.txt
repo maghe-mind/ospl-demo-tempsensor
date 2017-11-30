@@ -63,7 +63,7 @@ set(EXECUTABLE_MAIN_SOURCE_FILES ${EXECUTABLE_MAIN_SOURCE_FILES} ${IDL_GENERATED
         sensiboManager/SensiboManager.h
         sensiboManager/SensiboSkyAcState.cpp
         sensiboManager/SensiboSkyAcState.h
-        sensiboManager/SensiboSkyAcState.cpp sensiboManager/SensiboSkyAcState.h sensiboManager/SensiboParser.cpp sensiboManager/SensiboParser.h)
+        sensiboManager/SensiboSkyAcState.cpp sensiboManager/SensiboSkyAcState.h sensiboManager/SensiboParser.cpp sensiboManager/SensiboParser.h handlers/DDSHandler.cpp handlers/DDSHandler.h)
 add_executable(${EXECUTABLE_NAME} ${EXECUTABLE_MAIN_SOURCE_FILES})
 
 target_link_libraries(${EXECUTABLE_NAME} pthread)
