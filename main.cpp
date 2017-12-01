@@ -1,35 +1,44 @@
+#define CUSTOM_DOMAIN_PARTITIPANT 2
+//TODO: what is the best place to store CUSTOM_DOMAIN_PARTITIPANT?
+
 #include <iostream>
 #include <algorithm>
-#include "gen/tempsensor_DCPS.hpp"
-#include "implementation.h"
+#include <thread>
+#include <dds_json.h>
+#include "DDSManager.h"
+#include "defines.h"
+#include "sensiboManager/SensiboManager.h"
+#include "Simulation/ScenarioSimulator.h"
+#include "handlers/DDSInboxHandler.h"
+
 
 int main() {
 
+    //   ScenarioSimulator scenarioSimulator;
+    //  scenarioSimulator.createScenario();
 
-    dds::domain::DomainParticipant dp(2); //Change the value also in ospl.xml
-
-    dds::core::policy::Durability durability = dds::core::policy::Durability::Persistent();
-    //dds::core::policy::Durability durability = dds::core::policy::Durability::Volatile();
-    dds::core::policy::Reliability reliability = dds::core::policy::Reliability::Reliable();
-    dds::core::policy::History history = dds::core::policy::History::KeepLast(1);
-    dds::topic::qos::TopicQos topicQos =
-            dp.default_topic_qos() << durability << reliability << history;
-
-    dds::topic::Topic<TempSensorType> topic(dp, "TempSensorTopic", topicQos);
-    std::string name = "Temp Sensor";
+    DDSInboxHandler ddsInboxHandler;
+    std::thread t2([&ddsInboxHandler] {
+        ddsInboxHandler.DiscoverNewDevices();
+    });
+    t2.join();
 
 
+    DDSListenerHandler ddsListenerHandler(SENSIBO_HOUSE_PARTITION);
+    std::thread t1([&ddsListenerHandler] {
+        ddsListenerHandler.Run();
+    });
+    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 
-    int i = examples::dcps::tempsensor::isocpp::publisher(dp, topic, name);
+    // ScenarioSimulator scenarioSimulator;
+    // scenarioSimulator.createScenario();
+    t1.join();
 
-
-
-    int k = examples::dcps::tempsensor::isocpp::subscriber(dp, topic, name);
-
-
-    //int j = examples::dcps::tempsensor::isocpp::publisher(dp, topic, name);
-
-
-        return 0;
+    /*
+    Example: read exists
+    TempSensorType findSample;
+    bool b = reader.exists(2);
+    */
+    return 0;
 }
 
