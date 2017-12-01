@@ -1,1 +1,1 @@
-# ospl-demo-tempsensor
+Sensibo Sky Manager
